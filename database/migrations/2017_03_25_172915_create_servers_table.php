@@ -23,7 +23,7 @@ class CreateServersTable extends Migration
             $table->float('xp_rate');
             $table->float('gather_rate');
             $table->float('tame_speed');
-            $table->float('difficulty')
+            $table->float('difficulty');
             $table->date('last_wipe');
             $table->timestamps();
         });
