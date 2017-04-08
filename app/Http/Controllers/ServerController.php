@@ -16,7 +16,7 @@ class ServerController extends Controller
     {
         $servers = Server::all();
 
-        return view('modpack.index', compact('servers'));
+        return view('server.index', compact('servers'));
     }
 
     /**
@@ -26,6 +26,7 @@ class ServerController extends Controller
      */
     public function create()
     {
+      return view('server.create');
     }
 
     /**
