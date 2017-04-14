@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">View Servers</a>
+                    <a href="{{ url('/servers')}}">View Servers</a>
                     <a href="#">Documentation</a>
                     <a href="https://survivetheark.com">ARK</a>
                     <a href="https://github.com/WilliamFisher/ark-servers">GitHub</a>
