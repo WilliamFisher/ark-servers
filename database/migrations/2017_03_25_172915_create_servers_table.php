@@ -21,10 +21,11 @@ class CreateServersTable extends Migration
             $table->string('map');
             $table->text('description');
             $table->boolean('is_pvp');
+            $table->boolean('is_pve');
             $table->float('xp_rate');
             $table->float('gather_rate');
-            $table->float('tame_speed');
-            $table->float('difficulty');
+            $table->float('tame_rate');
+            $table->float('breeding_rate');
             $table->date('last_wipe');
             $table->timestamps();
         });
