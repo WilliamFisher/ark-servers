@@ -8,6 +8,7 @@
         <div class="panel-heading">Add Server</div>
         <div class="panel-body">
           <form class="form-horizontal" role="form" method="POST" action="{{ route('servers.store') }}">
+            {{ csrf_field() }}
             <div class="form-group">
 
               <label for="name" class="col-md-4 control-label">Name</label>
