@@ -7,6 +7,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">Add Server</div>
         <div class="panel-body">
+          @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           <form class="form-horizontal" role="form" method="POST" action="{{ route('servers.store') }}">
             {{ csrf_field() }}
             <div class="form-group">
@@ -14,7 +23,7 @@
               <label for="name" class="col-md-4 control-label">Name</label>
 
               <div class="col-md-6">
-                <input id="name" type="text" class="form-control" placeholder="Gamertag or PSN name" name="name" value="{{ old('name') }}" required autofocus>
+                <input id="name" type="text" class="form-control" placeholder="Gamertag or PSN name" name="name" value="{{ old('name') }}" maxlength="16" required autofocus>
               </div>
             </div>
 
@@ -46,10 +55,10 @@
 
               <div class="col-md-6">
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="ispvp"> PvP
+                  <input type="checkbox" id="ispvp" name="ispvp" value="1"> PvP
                 </label>
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="ispve"> PvE
+                  <input type="checkbox" id="ispve" name="ispve" value="1"> PvE
                 </label>
               </div>
             </div>
@@ -101,6 +110,15 @@
 
               <div class="col-md-6">
                 <input id="breedingrate" type="number" class="form-control" name="breedingrate" value="{{ old('breedingrate') }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+
+              <label for="lastwipe" class="col-md-4 control-label">Last Wipe</label>
+
+              <div class="col-md-6">
+                <input id="lastwipe" type="text" class="form-control" name="lastwipe" required>
               </div>
             </div>
 

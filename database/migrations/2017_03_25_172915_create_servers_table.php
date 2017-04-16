@@ -16,7 +16,7 @@ class CreateServersTable extends Migration
         Schema::create('servers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('platform');
+            $table->string('platform');
             $table->string('name', 16);
             $table->string('map');
             $table->text('description');
