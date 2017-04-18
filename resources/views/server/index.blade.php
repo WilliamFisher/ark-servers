@@ -30,7 +30,9 @@
                           <td>{{ $server->is_pvp }}</td>
                           <td>{{ $server->is_pve }}</td>
                           <td>{{ $server->xp_rate }}</td>
-                          <td><a class="btn btn-sm btn-primary" href="{{ url('servers/' . $server->id) }}">View</a></td>
+                          <td>
+                            <a class="btn btn-sm btn-primary" href="{{ url('servers/' . $server->id) }}">View</a>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>

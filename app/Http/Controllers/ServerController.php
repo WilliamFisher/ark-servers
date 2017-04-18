@@ -107,7 +107,7 @@ class ServerController extends Controller
      */
     public function edit(Server $server)
     {
-      return view('edit.servers', compact('server'));
+      return view('server.edit', compact('server'));
     }
 
     /**
@@ -129,6 +129,8 @@ class ServerController extends Controller
      */
     public function destroy(Server $server)
     {
+      $server->delete();
 
+      return redirect('servers');
     }
 }

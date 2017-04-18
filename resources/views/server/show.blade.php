@@ -15,6 +15,7 @@
               <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
               <li role="presentation"><a href="#settings" aria-controls="rates" role="tab" data-toggle="tab">Settings</a></li>
               <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
+              <li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="info">
@@ -23,6 +24,10 @@
                 <br>
                 <h4>Rules</h4>
                 <p>Example rules can be included here.</p>
+                <form id="delete-form" action="{{ url('servers/' . $server->id) }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="DELETE">
+                </form>
               </div>
               <div role="tabpanel" class="tab-pane" id="settings">
                 <h4>Settings</h4>
@@ -36,6 +41,12 @@
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <h4>Comments</h4>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="delete">
+                <h4>Confirm Delete</h4>
+                  <a class="btn btn-sm btn-danger" href="{{ url('servers/' . $server->id) }}" onclick="event.preventDefault();
+                           document.getElementById('delete-form').submit();">Delete
+                  </a>
               </div>
           </div>
       </div>
