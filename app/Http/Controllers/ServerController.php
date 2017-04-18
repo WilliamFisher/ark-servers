@@ -46,7 +46,7 @@ class ServerController extends Controller
     {
       $this->validate($request, [
         'name' => 'bail|required|string|unique:servers|max:16',
-        'description' => 'required|string|max:300',
+        'description' => 'required|string|max:500',
         'platform' => ['required', Rule::in(['Xbox', 'Playstation'])],
         'ispvp' => 'nullable|boolean',
         'ispve' => 'nullable|boolean',
