@@ -82,7 +82,7 @@
               <label for="xprate" class="col-md-4 control-label">XP Rate</label>
 
               <div class="col-md-6">
-                <input id="xprate" type="number" class="form-control" name="xprate" value="{{ old('xprate') }}" required>
+                <input id="xprate" type="number" step="0.01" class="form-control" name="xprate" value="{{ old('xprate') }}" required>
               </div>
             </div>
 
@@ -91,7 +91,7 @@
               <label for="gatherrate" class="col-md-4 control-label">Gather Rate</label>
 
               <div class="col-md-6">
-                <input id="gatherrate" type="number" class="form-control" name="gatherrate" value="{{ old('gatherrate') }}" required>
+                <input id="gatherrate" type="number" step="0.01" class="form-control" name="gatherrate" value="{{ old('gatherrate') }}" required>
               </div>
             </div>
 
@@ -100,7 +100,7 @@
               <label for="tamerate" class="col-md-4 control-label">Tame Rate</label>
 
               <div class="col-md-6">
-                <input id="tamerate" type="number" class="form-control" name="tamerate" value="{{ old('tamerate') }}" required>
+                <input id="tamerate" type="number" step="0.01" class="form-control" name="tamerate" value="{{ old('tamerate') }}" required>
               </div>
             </div>
 
@@ -109,7 +109,7 @@
               <label for="breedingrate" class="col-md-4 control-label">Breeding Rate</label>
 
               <div class="col-md-6">
-                <input id="breedingrate" type="number" class="form-control" name="breedingrate" value="{{ old('breedingrate') }}" required>
+                <input id="breedingrate" type="number" step="0.01" class="form-control" name="breedingrate" value="{{ old('breedingrate') }}" required>
               </div>
             </div>
 
