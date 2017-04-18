@@ -13,7 +13,6 @@
                       <thead>
                         <tr>
                           <th>Name</th>
-                          <th>Description</th>
                           <th>Map</th>
                           <th>Platform</th>
                           <th>PvP</th>
@@ -26,7 +25,6 @@
                         @foreach($servers as $server)
                         <tr>
                           <td>{{ $server->name }}</td>
-                          <td>{{ $server->description }}</td>
                           <td>{{ $server->map }}</td>
                           <td>{{ $server->platform }}</td>
                           <td>{{ $server->is_pvp }}</td>
