@@ -4,8 +4,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="page-header"><h1>{{ $server->name }} <span class="badge">PVP</span></h1></div>
-      <div class="panel panel-success">
+      <div class="page-header"><h1>{{ $server->name }} @if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</h1></div>
+      <div id="panel" class="panel">
         <div class="panel-heading">
           <h3 class="panel-title">{{ $server->platform }}</h3>
         </div>
@@ -43,4 +43,16 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+  if('{{ $server->platform }}' == 'Xbox') {
+    $( "#panel" ).addClass( "panel-success" );
+  } else {
+    $( "#panel" ).addClass( "panel-primary" );
+  }
+});
+</script>
 @endsection
