@@ -129,6 +129,8 @@ class ServerController extends Controller
      */
     public function destroy(Server $server)
     {
+      $this->authorize('delete', $server);
+
       $server->delete();
 
       return redirect('servers');
