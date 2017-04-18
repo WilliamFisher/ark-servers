@@ -84,6 +84,8 @@ class ServerController extends Controller
       $server->last_wipe = $request->lastwipe;
 
       $server->save();
+
+      return redirect()->action('ServerController@show', ['id' => $server->id]);
     }
 
     /**
@@ -105,6 +107,7 @@ class ServerController extends Controller
      */
     public function edit(Server $server)
     {
+      return view('edit.servers', compact('server'));
     }
 
     /**
@@ -126,5 +129,6 @@ class ServerController extends Controller
      */
     public function destroy(Server $server)
     {
+
     }
 }
