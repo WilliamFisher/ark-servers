@@ -4,42 +4,29 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">All Servers</div>
 
-                <div class="panel-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Map</th>
-                          <th>Platform</th>
-                          <th>PvP</th>
-                          <th>PvE</th>
-                          <th>XP Rate</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach($servers as $server)
-                        <tr>
-                          <td>{{ $server->name }}</td>
-                          <td>{{ $server->map }}</td>
-                          <td>{{ $server->platform }}</td>
-                          <td>{{ $server->is_pvp }}</td>
-                          <td>{{ $server->is_pve }}</td>
-                          <td>{{ $server->xp_rate }}</td>
-                          <td>
-                            <a class="btn btn-sm btn-primary" href="{{ url('servers/' . $server->id) }}">View</a>
-                          </td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+          <div class="page-header"><h3>View Servers</h3></div>
+
+          @foreach($servers as $server)
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="pull-right">@if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</div>
+                <h3 class="panel-title">
+                  <a href="{{ url('servers/' . $server->id) }}">{{ $server->name }}</a>
+                </h3>
+              </div>
+              <div class="panel-body text-center">
+                <p style="height:50px;">{{ str_limit($server->description, $limit = 80, $end = '...') }}</p><hr>
+                <p>{{ $server->map }}</p><hr>
+                <p>{{ $server->xp_rate }}x XP Rate</p><hr>
+                <p>{{ $server->gather_rate }}x Gather Rate</p><hr>
+                <p>{{ $server->tame_rate }}x Tame Rate</p>
+              </div>
             </div>
+          </div>
+          @endforeach
+
         </div>
     </div>
 </div>
