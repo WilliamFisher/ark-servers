@@ -15,7 +15,7 @@
               <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
               <li role="presentation"><a href="#settings" aria-controls="rates" role="tab" data-toggle="tab">Settings</a></li>
               <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
-              @if(Auth::user()->id == $server->user_id)<li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>@endif
+              @if(!Auth::guest() && Auth::user()->id == $server->user_id)<li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>@endif
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="info">
