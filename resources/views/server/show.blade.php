@@ -41,6 +41,7 @@
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <h4>Comments</h4>
+                <div class="well">Nothing to see here! This feature is coming soon.</div>
               </div>
               <div role="tabpanel" class="tab-pane" id="delete">
                 <h4>Confirm Delete</h4>
