@@ -9,7 +9,7 @@
 
           @foreach($servers as $server)
           <div class="col-md-4">
-            <div class="panel panel-primary">
+            <div class="panel @if($server->platform == 'Xbox') panel-success @endif @if($server->platform == 'Playstation') panel-primary @endif">
               <div class="panel-heading">
                 <div class="pull-right">@if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</div>
                 <h3 class="panel-title">
