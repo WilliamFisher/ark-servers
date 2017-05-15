@@ -16,7 +16,7 @@
                   </ul>
               </div>
           @endif
-          <form class="form-horizontal" role="form" method="POST" action="{{ route('servers.store') }}">
+          <form class="form-horizontal" role="form" method="POST" action="{{ route('servers.update') }}">
             {{ csrf_field() }}
             <div class="form-group">
 
