@@ -21,9 +21,9 @@ class ServerController extends Controller
      */
     public function index()
     {
-        $servers = Server::all();
+      $servers = Server::all();
 
-        return view('server.index', compact('servers'));
+      return view('server.index', compact('servers'));
     }
 
     /**
