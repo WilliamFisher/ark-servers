@@ -18,4 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/servers/xbox', 'ServerController@xboxindex');
+Route::get('/servers/playstation', 'ServerController@playstationindex');
 Route::resource('servers','ServerController');

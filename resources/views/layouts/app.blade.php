@@ -43,7 +43,14 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('servers') }}">View Servers</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Servers <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="{{ url('servers') }}">All Servers</a></li>
+                            <li><a href="{{ url('servers/xbox') }}">Xbox</a></li>
+                            <li><a href="{{ url('servers/playstation') }}">Playstation</a></li>
+                          </ul>
+                        </li>
                         <li><a href="{{ url('home') }}">My Servers</a></li>
                     </ul>
 

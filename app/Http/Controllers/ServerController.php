@@ -6,13 +6,14 @@ use App\Server;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Auth;
+use DB;
 
 class ServerController extends Controller
 {
 
   public function __construct()
   {
-    $this->middleware('auth')->except('index','show');
+    $this->middleware('auth')->except('index','show', 'xboxindex', 'playstationindex');
   }
     /**
      * Display a listing of the resource.
@@ -22,6 +23,20 @@ class ServerController extends Controller
     public function index()
     {
       $servers = Server::all();
+
+      return view('server.index', compact('servers'));
+    }
+
+    public function xboxindex()
+    {
+      $servers = DB::table('servers')->where('platform', 'Xbox')->get();
+
+      return view('server.index', compact('servers'));
+    }
+
+    public function playstationindex()
+    {
+      $servers = DB::table('servers')->where('platform', 'Playstation')->get();
 
       return view('server.index', compact('servers'));
     }
