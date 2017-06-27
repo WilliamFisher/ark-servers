@@ -4,7 +4,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="page-header"><h1>{{ $server->name }} @if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</h1></div>
+      <div class="page-header"><h1>{{ $server->name }} @if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</h1>
+      </div>
       <div id="panel" class="panel">
         <div class="panel-heading">
           <h3 class="panel-title">{{ $server->platform }}</h3>
@@ -15,6 +16,7 @@
               <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
               <li role="presentation"><a href="#settings" aria-controls="rates" role="tab" data-toggle="tab">Settings</a></li>
               <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
+              @if(!$server->liked())<li><a href="/servers/{{ $server->id }}/like">Add to Favorites</a></li> @else <li><a href="/servers/{{ $server->id }}/like">Remove Favorite</a></li>@endif
               @if(!Auth::guest() && Auth::user()->id == $server->user_id)<li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>@endif
             </ul>
             <div class="tab-content">

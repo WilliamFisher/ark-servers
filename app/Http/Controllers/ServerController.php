@@ -41,6 +41,14 @@ class ServerController extends Controller
       return view('server.index', compact('servers'));
     }
 
+    public function likeserver($id)
+    {
+      $server = Server::find($id);
+      $server->like();
+
+      return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
