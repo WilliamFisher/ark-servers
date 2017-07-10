@@ -74,7 +74,6 @@
     font-size: 80px;
     font-weight: 700;
     letter-spacing: 1px;
-    text-shadow: 2px 1px rgba(0,0,0,0.3);
   }
 
   ::selection {
