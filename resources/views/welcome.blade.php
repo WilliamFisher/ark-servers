@@ -1,94 +1,136 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ark Servers</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
+</head>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<style>
 
-            .position-ref {
-                position: relative;
-            }
+  .navbar-custom {
+    padding: 20px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: 0 0;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+  .navbar-custom .navbar-brand {
+    font-weight: 500px;
+  }
 
-            .content {
-                text-align: center;
-            }
+  .navbar-custom a {
+    color: #fff;
+  }
 
-            .title {
-                font-size: 84px;
-            }
+  .intro {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+    display: table;
+    text-align: center;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    background: url(../img/background-image.jpg) bottom center no-repeat #000;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
+  .intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+  }
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Ark Servers
-                </div>
+  .intro .intro-body .brand-heading {
+    font-size: 80px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
 
-                <div class="links">
-                    <a href="{{ url('/servers')}}">All Servers</a>
-                    <a href="{{ url('/servers/xbox')}}">Xbox</a>
-                    <a href="{{ url('/servers/playstation')}}">Playstation</a>
-                    <a href="https://survivetheark.com">ARK</a>
-                </div>
-            </div>
+  ::selection {
+    text-shadow: none;
+    background: #fcfcfc;
+}
+
+</style>
+<body>
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Ark Servers</a>
+      </div>
+      <div class="navbar-collapse navbar-right collapse" id="app-navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          @if (Auth::guest())
+              <li><a href="{{ route('login') }}">Login</a></li>
+              <li><a href="{{ route('register') }}">Register</a></li>
+          @else
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                      {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+
+                  <ul class="dropdown-menu" role="menu">
+                      <li>
+                        <a href="{{ url('servers/create') }}">Add Server</a>
+                      </li>
+                      <li>
+                          <a href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                              Logout
+                          </a>
+
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                          </form>
+                      </li>
+                  </ul>
+              </li>
+          @endif
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="intro">
+    <div class="intro-body" id="app">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1 class="brand-heading">Ark Servers</h1>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </header>
+
+  <script src="{{ asset('js/app.js') }}"></script>
+</body>
 </html>
