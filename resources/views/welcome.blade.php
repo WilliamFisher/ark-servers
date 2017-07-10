@@ -83,10 +83,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/servers')}}">View Servers</a>
-                    <a href="#">Documentation</a>
+                    <a href="{{ url('/servers')}}">All Servers</a>
+                    <a href="{{ url('/servers/xbox')}}">Xbox</a>
+                    <a href="{{ url('/servers/playstation')}}">Playstation</a>
                     <a href="https://survivetheark.com">ARK</a>
-                    <a href="https://github.com/WilliamFisher/ark-servers">GitHub</a>
                 </div>
             </div>
         </div>
