@@ -33,6 +33,15 @@
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
+  .navbar-custom .navbar-nav > li > a {
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-right: 5px;
+  }
+
+  .navbar-custom .navbar-toggle .icon-bar {
+    background-color: #888;
+  }
+
   .navbar-custom .navbar-brand {
     font-weight: 500px;
   }
@@ -63,8 +72,9 @@
 
   .intro .intro-body .brand-heading {
     font-size: 80px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 1px;
+    text-shadow: 2px 1px rgba(0,0,0,0.3);
   }
 
   ::selection {
@@ -85,7 +95,7 @@
         </button>
         <a class="navbar-brand" href="#">Ark Servers</a>
       </div>
-      <div class="navbar-collapse navbar-right collapse" id="app-navbar-collapse">
+      <div class="collapse navbar-collapse navbar-right" id="app-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           @if (Auth::guest())
               <li><a href="{{ route('login') }}">Login</a></li>
