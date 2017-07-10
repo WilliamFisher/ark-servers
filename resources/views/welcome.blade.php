@@ -97,6 +97,7 @@
       <div class="collapse navbar-collapse navbar-right" id="app-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           @if (Auth::guest())
+              <li><a href="{{ url('/servers') }}">All Servers</a></li>
               <li><a href="{{ route('login') }}">Login</a></li>
               <li><a href="{{ route('register') }}">Register</a></li>
           @else
@@ -106,9 +107,8 @@
                   </a>
 
                   <ul class="dropdown-menu" role="menu">
-                      <li>
-                        <a href="{{ url('servers/create') }}">Add Server</a>
-                      </li>
+                      <li><a href="{{ url('/servers') }}">All Servers</a></li>
+                      <li><a href="{{ url('servers/create') }}">Add Server</a></li>
                       <li>
                           <a href="{{ route('logout') }}"
                               onclick="event.preventDefault();
@@ -134,6 +134,10 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h1 class="brand-heading">Ark Servers</h1>
+            <p>
+              <a href="{{ url('/servers/xbox') }}" class="btn btn-success btn-lg">Xbox Servers</a>
+              <a href="{{ url('/servers/playstation') }}" class="btn btn-primary btn-lg">Playstation Servers</a>
+            </p>
           </div>
         </div>
       </div>
