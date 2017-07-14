@@ -2,9 +2,12 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
+use \Conner\Likeable\LikeableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Server extends Model
 {
-    use \Conner\Likeable\LikeableTrait;
+    use LikeableTrait;
+    use Searchable;
 }
