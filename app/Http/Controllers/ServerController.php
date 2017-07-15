@@ -56,6 +56,14 @@ class ServerController extends Controller
       return back();
     }
 
+    public function unlikeserver($id)
+    {
+      $server = Server::find($id);
+      $server->unlike();
+
+      return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
