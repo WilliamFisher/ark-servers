@@ -54,6 +54,13 @@
                         <li><a href="{{ url('home') }}">My Servers</a></li>
                     </ul>
 
+                    <form id="search-form" action="{{ route('servers.search') }}" class="navbar-form navbar-left" method="GET">
+                      <div class="form-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search">
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
