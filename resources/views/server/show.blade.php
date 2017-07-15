@@ -27,7 +27,7 @@
                 <h4>Rules</h4>
                 <p>Example rules can be included here.</p>
                 <br>
-                <h4>Server last wiped {{ $server->last_wipe->diffInDays() }} day(s) ago</h4>
+                <h4>Server last wiped {{ $server->last_wipe->diffForHumans() }}</h4>
                 <form id="delete-form" action="{{ url('servers/' . $server->id) }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="DELETE">
