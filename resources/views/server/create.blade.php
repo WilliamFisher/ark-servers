@@ -129,7 +129,7 @@
               <label for="lastwipe" class="col-md-4 control-label">Last Wipe</label>
 
               <div class="col-md-6">
-                <input id="lastwipe" type="text" class="form-control" name="lastwipe" required>
+                <date-component></date-component>
               </div>
             </div>
 

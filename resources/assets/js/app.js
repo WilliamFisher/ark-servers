@@ -1,4 +1,4 @@
-
+import Datepicker from 'vuejs-datepicker';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -14,6 +14,12 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('date-component', {
+  components: {
+    Datepicker
+  },
+  template: '<datepicker format="yyyy-MM-dd" inline=true name="lastwipe"></datepicker>'
+});
 
 const app = new Vue({
     el: '#app'
