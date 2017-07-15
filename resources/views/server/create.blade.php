@@ -39,6 +39,16 @@
 
             <div class="form-group">
 
+              <label for="rules" class="col-md-4 control-label">Rules</label>
+
+              <div class="col-md-6">
+                <input id="rules" type="text" class="form-control" placeholder="Seperate rules by a comma" name="rules" value="{{ old('rules') }}" required>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
               <label for="platform" class="col-md-4 control-label">Platform</label>
 
               <div class="col-md-6">
