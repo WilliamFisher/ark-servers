@@ -72,6 +72,7 @@
                   <option>The Island</option>
                   <option>The Center</option>
                   <option>Scorched Earth</option>
+                  <option>Ragnarok</option>
                 </select>
               </div>
 

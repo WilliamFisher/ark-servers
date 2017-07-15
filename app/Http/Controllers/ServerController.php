@@ -44,7 +44,7 @@ class ServerController extends Controller
     public function search(Request $request)
     {
       $servers = Server::search($request->search)->get();
-      
+
       return view('server.index', compact('servers'));
     }
 
@@ -80,7 +80,7 @@ class ServerController extends Controller
         'platform' => ['required', Rule::in(['Xbox', 'Playstation'])],
         'ispvp' => 'nullable|boolean',
         'ispve' => 'nullable|boolean',
-        'map' => ['required', Rule::in(['The Island', 'The Center', 'Scorched Earth'])],
+        'map' => ['required', Rule::in(['The Island', 'The Center', 'Scorched Earth', 'Ragnarok'])],
         'xprate' => 'required|numeric',
         'gatherrate' => 'required|numeric',
         'tamerate' => 'required|numeric',
