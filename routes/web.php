@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/home/favorited', 'HomeController@favorited');
 Route::get('/servers/xbox', 'ServerController@xboxindex');
 Route::get('/servers/playstation', 'ServerController@playstationindex');
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
