@@ -27,6 +27,13 @@
           </div>
           @endforeach
 
+          @if($servers->isEmpty())
+            <div class="well">
+              <p>You have not created any servers or added one to your favorites.</p>
+              <a class="btn btn-default btn-sm" href="{{ route('servers.create') }}">Create Server</a>
+            </div>
+          @endif
+
         </div>
     </div>
 </div>
