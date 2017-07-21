@@ -34,8 +34,20 @@
   }
 
   .navbar-custom .navbar-nav > li > a {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.0);
     margin-right: 5px;
+  }
+
+  .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+
+  .dropdown-menu > li > a {
+    color: white;
+  }
+
+  .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.0);
   }
 
   .navbar-custom .navbar-toggle .icon-bar {
@@ -74,6 +86,10 @@
     font-size: 80px;
     font-weight: 700;
     letter-spacing: 1px;
+  }
+
+  .btn {
+    margin-bottom: 5px;
   }
 
   ::selection {
@@ -135,6 +151,7 @@
           <div class="col-md-8 col-md-offset-2">
             <h1 class="brand-heading">Ark Servers</h1>
             <p>
+              <a href="{{ url('/servers') }}" class="btn btn-default btn-lg">All Servers</a>
               <a href="{{ url('/servers/xbox') }}" class="btn btn-success btn-lg">Xbox Servers</a>
               <a href="{{ url('/servers/playstation') }}" class="btn btn-primary btn-lg">Playstation Servers</a>
             </p>
