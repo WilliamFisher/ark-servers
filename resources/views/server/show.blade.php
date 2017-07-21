@@ -13,11 +13,59 @@
 
         <div class="panel-body">
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
-              <li role="presentation"><a href="#settings" aria-controls="rates" role="tab" data-toggle="tab">Settings</a></li>
-              <li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
-              @if(!$server->liked())<li><a href="/servers/{{ $server->id }}/like">Add to Favorites</a></li> @else <li><a href="/servers/{{ $server->id }}/unlike">Remove Favorite</a></li>@endif
-              @if(!Auth::guest() && Auth::user()->id == $server->user_id)<li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>@endif
+              <li role="presentation" class="active">
+                <a href="#info" class="hidden-xs" aria-controls="info" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Info
+                </a>
+                <a href="#info" class="hidden-lg hidden-md hidden-sm" aria-controls="info" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#settings" class="hidden-xs" aria-controls="rates" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Settings
+                </a>
+                <a href="#settings" class="hidden-lg hidden-md hidden-sm" aria-controls="rates" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#comments" class="hidden-xs" aria-controls="comments" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments
+                </a>
+                <a href="#comments" class="hidden-lg hidden-md hidden-sm" aria-controls="comments" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                </a>
+              </li>
+              @if(!$server->liked())
+              <li>
+                <a class="hidden-xs" href="/servers/{{ $server->id }}/like">
+                  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add to Favorites
+                </a>
+                <a href="/servers/{{ $server->id }}/like" class="hidden-lg hidden-md hidden-sm">
+                  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </a>
+              </li>
+              @else
+              <li>
+                <a class="hidden-xs" href="/servers/{{ $server->id }}/unlike">
+                  <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove Favorite
+                </a>
+                <a href="/servers/{{ $server->id }}/unlike" class="hidden-lg hidden-md hidden-sm">
+                  <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                </a>
+              </li>
+              @endif
+              @if(!Auth::guest() && Auth::user()->id == $server->user_id)
+              <li role="presentation">
+                <a class="hidden-xs" href="#delete" aria-controls="delete" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+                </a>
+                <a href="#delete" class="hidden-lg hidden-md hidden-sm" aria-controls="delete" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </a>
+              </li>
+              @endif
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="info">
