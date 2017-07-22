@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/home/favorited', 'HomeController@favorited');
+Route::get('/dashboard', 'HomeController@index');
+Route::get('/dashboard/favorited', 'HomeController@favorited');
 
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
 Route::get('/servers/{id}/like', 'ServerController@likeserver');
