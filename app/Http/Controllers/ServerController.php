@@ -13,7 +13,7 @@ class ServerController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth')->except('index','show', 'xboxindex', 'playstationindex', 'search');
+    $this->middleware('auth')->except('index','show', 'search');
   }
     /**
      * Display a listing of the resource.
@@ -24,19 +24,10 @@ class ServerController extends Controller
     {
       $servers = Server::all();
 
-      return view('server.index', compact('servers'));
-    }
-
-    public function xboxindex()
-    {
-      $servers = DB::table('servers')->where('platform', 'Xbox')->get();
-
-      return view('server.index', compact('servers'));
-    }
-
-    public function playstationindex()
-    {
-      $servers = DB::table('servers')->where('platform', 'Playstation')->get();
+      if ($platform = request('platform'))
+      {
+        $servers = Server::ofPlatform($platform)->get();
+      }
 
       return view('server.index', compact('servers'));
     }

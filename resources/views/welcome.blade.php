@@ -152,8 +152,8 @@
             <h1 class="brand-heading">Ark Servers</h1>
             <p>
               <a href="{{ url('/servers') }}" class="btn btn-default btn-lg">All Servers</a>
-              <a href="{{ url('/servers/xbox') }}" class="btn btn-success btn-lg">Xbox Servers</a>
-              <a href="{{ url('/servers/playstation') }}" class="btn btn-primary btn-lg">Playstation Servers</a>
+              <a href="{{ url('/servers?platform=xbox') }}" class="btn btn-success btn-lg">Xbox Servers</a>
+              <a href="{{ url('/servers?platform=playstation') }}" class="btn btn-primary btn-lg">Playstation Servers</a>
             </p>
           </div>
         </div>

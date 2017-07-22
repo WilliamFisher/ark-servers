@@ -17,4 +17,10 @@ class Server extends Model
       'deleted_at',
       'last_wipe'
     ];
+
+    public function scopeOfPlatform($query, $platform)
+    {
+      return $query->where('platform', $platform);
+    }
+
 }
