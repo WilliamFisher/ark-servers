@@ -44,7 +44,7 @@ class ServerController extends Controller
       $server = Server::find($id);
       $server->like();
 
-      return back();
+      return back()->with('status', 'Added server to favorites.');
     }
 
     public function unlikeserver($id)
@@ -52,7 +52,7 @@ class ServerController extends Controller
       $server = Server::find($id);
       $server->unlike();
 
-      return back();
+      return back()->with('status', 'Removed server from favorites.');
     }
 
     /**

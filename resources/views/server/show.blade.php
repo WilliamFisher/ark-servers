@@ -6,6 +6,11 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="page-header"><h1>{{ $server->name }} @if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</h1>
       </div>
+      @if (session('status'))
+        <div class="alert alert-info">
+          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{ session('status') }}
+        </div>
+      @endif
       <div id="panel" class="panel">
         <div class="panel-heading">
           <h3 class="panel-title">{{ $server->platform }}</h3>
