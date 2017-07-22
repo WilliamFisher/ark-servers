@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
       $servers = User::find(Auth::user()->id)->servers;
 
-      return view('home', compact('servers'));
+      return view('dashboard.home', compact('servers'));
     }
 
     public function favorited()
@@ -36,6 +36,6 @@ class HomeController extends Controller
       $user_id = Auth::user()->id;
       $servers = Server::whereLikedBy($user_id)->get();
 
-      return view('home', compact('servers'));
+      return view('dashboard.favorited', compact('servers'));
     }
 }

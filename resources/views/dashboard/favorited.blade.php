@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-          <div class="page-header"><h3>My Servers</h3></div>
+          <div class="page-header"><h3>Favorite Servers</h3></div>
 
           @foreach($servers as $server)
           <div class="col-md-4">
@@ -29,8 +29,7 @@
 
           @if($servers->isEmpty())
             <div class="well">
-              <p>You have not created any servers or added one to your favorites.</p>
-              <a class="btn btn-default btn-sm" href="{{ route('servers.create') }}">Create Server</a>
+              <p>You have not favorited any servers. Click the plus button on a server to add it to your favorites.</p>
             </div>
           @endif
 
