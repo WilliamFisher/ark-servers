@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -21,83 +22,6 @@
     </script>
 </head>
 
-<style>
-
-  .navbar-custom {
-    padding: 20px 0;
-    border-bottom: none;
-    letter-spacing: 1px;
-    background: 0 0;
-    margin-bottom: 0;
-    text-transform: uppercase;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-
-  .navbar-custom .navbar-nav > li > a {
-    background-color: rgba(0, 0, 0, 0.0);
-    margin-right: 5px;
-  }
-
-  .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: rgba(0, 0, 0, 0.0);
-  }
-
-  .dropdown-menu > li > a {
-    color: white;
-  }
-
-  .dropdown-menu {
-    background-color: rgba(0, 0, 0, 0.0);
-  }
-
-  .navbar-custom .navbar-toggle .icon-bar {
-    background-color: #888;
-  }
-
-  .navbar-custom .navbar-brand {
-    font-weight: 500px;
-  }
-
-  .navbar-custom a {
-    color: #fff;
-  }
-
-  .intro {
-    height: 100vh;
-    width: 100vw;
-    padding: 0;
-
-    display: table;
-    text-align: center;
-    color: #fff;
-    font-family: 'Raleway', sans-serif;
-    background: url(../img/background-image.jpg) bottom center no-repeat #000;
-    -webkit-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-  }
-
-  .intro .intro-body {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .intro .intro-body .brand-heading {
-    font-size: 80px;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-
-  .btn {
-    margin-bottom: 5px;
-  }
-
-  ::selection {
-    text-shadow: none;
-    background: #fcfcfc;
-}
-
-</style>
 <body>
   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
