@@ -99,6 +99,7 @@
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <h4>Comments</h4>
+                @if(Auth::user())
                 <div class="card">
                   <div class="card-block">
                     <form method="POST" action="/servers/{{ $server->id }}/comments">
@@ -116,10 +117,14 @@
                   </div>
                 </div>
                 <hr>
+                @elseif(Auth::guest())
+                <p><a href="{{ url('/login') }}">Login</a> to post a comment.</p>
+                <hr>
+                @endif
                 <ul class="list-group">
                 @foreach($server->comments as $comment)
                   <li class="list-group-item">
-                    <strong>{{ $comment->user->name }}</strong>: {{ $comment->body }} - {{ $comment->created_at->diffForHumans() }}
+                    <strong>{{ $comment->user->name }}:</strong> {{ $comment->body }} - {{ $comment->created_at->diffForHumans() }}
                   </li>
                 @endforeach
                 </ul>
