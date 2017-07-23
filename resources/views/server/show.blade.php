@@ -88,6 +88,7 @@
               </div>
               <div role="tabpanel" class="tab-pane" id="settings">
                 <h4>Settings</h4>
+                <hr>
                 <ul class="list-group">
                   <li class="list-group-item">{{ $server->map }}</li>
                   <li class="list-group-item">XP: {{ $server->xp_rate }}x</li>
@@ -98,7 +99,30 @@
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <h4>Comments</h4>
-                <div class="well">Nothing to see here! This feature is coming soon.</div>
+                <div class="card">
+                  <div class="card-block">
+                    <form method="POST" action="/servers/{{ $server->id }}/comments">
+
+                      {{ csrf_field() }}
+
+                      <div class="form-group">
+                        <textarea class="form-control" name="body" placeholder="Leave a comment." required></textarea>
+                      </div>
+
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <hr>
+                <ul class="list-group">
+                @foreach($server->comments as $comment)
+                  <li class="list-group-item">
+                    <strong>{{ $comment->user->name }}</strong>: {{ $comment->body }} <strong> - {{ $comment->created_at->diffForHumans() }}</strong>
+                  </li>
+                @endforeach
+                </ul>
               </div>
               <div role="tabpanel" class="tab-pane" id="delete">
                 <h4>Confirm Delete</h4>
