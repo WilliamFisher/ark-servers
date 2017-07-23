@@ -78,7 +78,7 @@
                 <p>{{ $server->description }}</p>
                 <br>
                 <h4>Rules</h4>
-                <p>Example rules can be included here.</p>
+                <div id="rules_section"></div>
                 <br>
                 <h4>Server last wiped {{ $server->last_wipe->diffForHumans() }}</h4>
                 <form id="delete-form" action="{{ url('servers/' . $server->id) }}" method="POST" style="display: none;">
@@ -151,6 +151,34 @@ $(document).ready(function() {
   } else {
     $( "#panel" ).addClass( "panel-primary" );
   }
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  var rules = '{{ $server->rules }}';
+  var array = rules.split(',');
+
+  function makeUL(array) {
+    var list = document.createElement('ul');
+
+    list.className = 'list-group';
+
+    for(var i=0; i < array.length; i++)
+    {
+      var item = document.createElement('li');
+
+      item.className = 'list-group-item';
+
+      item.appendChild(document.createTextNode(array[i]));
+
+      list.appendChild(item);
+    }
+
+    return list;
+  }
+
+  $( "#rules_section" ).append(makeUL(array));
 });
 </script>
 @endsection

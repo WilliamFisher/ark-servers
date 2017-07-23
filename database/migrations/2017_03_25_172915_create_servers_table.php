@@ -20,6 +20,7 @@ class CreateServersTable extends Migration
             $table->string('name', 16);
             $table->string('map');
             $table->text('description');
+            $table->string('rules');
             $table->boolean('is_pvp');
             $table->boolean('is_pve');
             $table->float('xp_rate');
