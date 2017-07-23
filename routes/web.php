@@ -24,4 +24,6 @@ Route::get('/servers/search', 'ServerController@search')->name('servers.search')
 Route::get('/servers/{id}/like', 'ServerController@likeserver');
 Route::get('/servers/{id}/unlike', 'ServerController@unlikeserver');
 
+Route::post('/servers/{server}/comments', 'CommentsController@store');
+
 Route::resource('servers','ServerController');
