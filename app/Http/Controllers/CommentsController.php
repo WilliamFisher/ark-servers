@@ -26,6 +26,6 @@ class CommentsController extends Controller
 
       $comment->save();
 
-      return back();
+      return back()->with('status', 'Successfully added a comment.');
     }
 }
