@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function servers()
     {
-        return $this->hasMany('App\Server');
+        return $this->hasMany(Server::class);
     }
 }
