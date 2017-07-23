@@ -10,7 +10,12 @@ use Auth;
 
 class CommentsController extends Controller
 {
-    public function store(Server $server)
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
+  public function store(Server $server)
     {
       $this->validate(request(), ['body' => 'required|min:2']);
 
