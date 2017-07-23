@@ -119,7 +119,7 @@
                 <ul class="list-group">
                 @foreach($server->comments as $comment)
                   <li class="list-group-item">
-                    <strong>{{ $comment->user->name }}</strong>: {{ $comment->body }} <strong> - {{ $comment->created_at->diffForHumans() }}</strong>
+                    <strong>{{ $comment->user->name }}</strong>: {{ $comment->body }} - {{ $comment->created_at->diffForHumans() }}
                   </li>
                 @endforeach
                 </ul>
