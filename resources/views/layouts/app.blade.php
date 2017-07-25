@@ -113,7 +113,7 @@
         @yield('content')
     </div>
 
-    <footer class="footer">
+    <footer style="position:absolute;bottom:0;width:100%;height:50px;background-color:#f5f5f5;" class="footer">
       <div class="container">
         <p><a href="{{ url('/feedback') }}">Leave Feedback</a></p>
       </div>
