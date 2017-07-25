@@ -113,6 +113,12 @@
         @yield('content')
     </div>
 
+    <footer class="footer">
+      <div class="container">
+        <p><a href="{{ url('/feedback') }}">Leave Feedback</a></p>
+      </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')

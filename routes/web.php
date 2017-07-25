@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/feedback' function () {
+  return view('typeform');
+});
+
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index');
