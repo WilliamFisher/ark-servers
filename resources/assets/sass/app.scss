@@ -7,3 +7,28 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #ffffff;
+  border-top: 1px solid #d3e0e9;
+}
+.container .text-muted {
+  margin: 16px 0;
+}
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
