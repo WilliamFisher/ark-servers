@@ -59,13 +59,7 @@
                             <li><a href="{{ url('servers?platform=playstation') }}">Playstation</a></li>
                           </ul>
                         </li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Servers <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="{{ url('dashboard') }}">Created</a></li>
-                            <li><a href="{{ url('dashboard/favorited') }}">Favorited</a></li>
-                          </ul>
-                        </li>
+                        <li><a href="{{ url('dashboard') }}">My Servers</a></li>
                     </ul>
 
                     <form id="search-form" action="{{ route('servers.search') }}" class="navbar-form navbar-left" method="GET">

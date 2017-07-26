@@ -22,7 +22,6 @@ Route::get('/feedback', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index');
-Route::get('/dashboard/favorited', 'HomeController@favorited');
 
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
 Route::get('/servers/{id}/like', 'ServerController@likeserver');
