@@ -42,7 +42,7 @@
               <label for="rules" class="col-md-4 control-label">Rules</label>
 
               <div class="col-md-6">
-                <input id="rules" type="text" class="form-control" placeholder="Seperate rules by a comma" name="rules" value="{{ old('rules') }}" required>
+                <input id="rules" type="text" class="form-control" placeholder="Seperate rules by a comma" name="rules" value="{{ old('rules') }}">
               </div>
 
             </div>
@@ -52,7 +52,7 @@
               <label for="platform" class="col-md-4 control-label">Platform</label>
 
               <div class="col-md-6">
-                <select id="platform" class="form-control" name="platform" value="{{ old('platform') }}">
+                <select id="platform" class="form-control" name="platform">
                   <option>Xbox</option>
                   <option>Playstation</option>
                 </select>
@@ -78,7 +78,7 @@
               <label for="map" class="col-md-4 control-label">Map</label>
 
               <div class="col-md-6">
-                <select id="map" class="form-control" name="map" value="{{ old('map') }}">
+                <select id="map" class="form-control" name="map">
                   <option>The Island</option>
                   <option>The Center</option>
                   <option>Scorched Earth</option>
