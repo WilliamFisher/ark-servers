@@ -22,11 +22,11 @@ class ServerController extends Controller
      */
     public function index()
     {
-      $servers = Server::all();
+      $servers = Server::paginate(9);
 
       if ($platform = request('platform'))
       {
-        $servers = Server::ofPlatform($platform)->get();
+        $servers = Server::ofPlatform($platform)->paginate(9);
       }
 
       return view('server.index', compact('servers'));
@@ -34,7 +34,7 @@ class ServerController extends Controller
 
     public function search(Request $request)
     {
-      $servers = Server::search($request->search)->get();
+      $servers = Server::search($request->search)->paginate(9);
 
       return view('server.index', compact('servers'));
     }

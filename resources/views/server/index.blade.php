@@ -26,8 +26,17 @@
             </div>
           </div>
           @endforeach
-
         </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        @if(app('request')->input('platform'))
+        {{ $servers->appends(['platform' => $_GET['platform']])->links() }}
+        @else
+        {{ $servers->links() }}
+        @endif
+      </div>
     </div>
 </div>
 @endsection
