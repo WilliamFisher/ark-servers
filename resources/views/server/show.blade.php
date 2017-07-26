@@ -75,25 +75,37 @@
             </ul>
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="info">
-                <h4>Description</h4>
-                <p>{{ $server->description }}</p>
-                <hr>
-                <h4>Rates</h4>
-                <ul class="list-group">
-                  <li class="list-group-item">{{ $server->map }}</li>
-                  <li class="list-group-item">XP: {{ $server->xp_rate }}x</li>
-                  <li class="list-group-item">Gather: {{ $server->gather_rate }}x</li>
-                  <li class="list-group-item">Tame: {{ $server->tame_rate }}x</li>
-                  <li class="list-group-item">Breeding: {{ $server->breeding_rate }}x</li>
-                </ul>
-                <h4>Rules</h4>
-                <div id="rules_section"></div>
-                <br>
-                <h4>Server last wiped {{ $server->last_wipe->diffForHumans() }}</h4>
-                <form id="delete-form" action="{{ url('servers/' . $server->id) }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="_method" value="DELETE">
-                </form>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <h4>Description</h4>
+                      <p>{{ $server->description }}</p>
+                      <hr>
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Rates</h4>
+                      <ul class="list-group">
+                        <li class="list-group-item">{{ $server->map }}</li>
+                        <li class="list-group-item">XP: {{ $server->xp_rate }}x</li>
+                        <li class="list-group-item">Gather: {{ $server->gather_rate }}x</li>
+                        <li class="list-group-item">Tame: {{ $server->tame_rate }}x</li>
+                        <li class="list-group-item">Breeding: {{ $server->breeding_rate }}x</li>
+                      </ul>
+                      <h4>Rules</h4>
+                      <div id="rules_section"></div>
+                      <br>
+                      <h4>Server last wiped {{ $server->last_wipe->diffForHumans() }}</h4>
+                      <form id="delete-form" action="{{ url('servers/' . $server->id) }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                          <input type="hidden" name="_method" value="DELETE">
+                      </form>
+                    </div>
+                    <div class="col-md-4">
+                      <h4>Discord</h4>
+                      <iframe src="https://discordapp.com/widget?id={{ $server->discord_id }}&theme=light" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <h4>Comments</h4>

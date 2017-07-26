@@ -85,6 +85,7 @@ class ServerController extends Controller
         'gatherrate' => 'required|numeric',
         'tamerate' => 'required|numeric',
         'breedingrate' => 'required|numeric',
+        'discordid' => 'numeric',
         'lastwipe' => 'required|date',
       ]);
 
@@ -117,6 +118,7 @@ class ServerController extends Controller
       $server->gather_rate = $request->gatherrate;
       $server->tame_rate = $request->tamerate;
       $server->breeding_rate = $request->breedingrate;
+      $server->discord_id = $request->discordid;
       $server->last_wipe = $request->lastwipe;
 
       $server->save();
@@ -171,6 +173,7 @@ class ServerController extends Controller
         'gatherrate' => 'required|numeric',
         'tamerate' => 'required|numeric',
         'breedingrate' => 'required|numeric',
+        'discordid' => 'nullable|numeric',
         'lastwipe' => 'required|date',
       ]);
 
@@ -200,6 +203,7 @@ class ServerController extends Controller
       $server->gather_rate = $request->gatherrate;
       $server->tame_rate = $request->tamerate;
       $server->breeding_rate = $request->breedingrate;
+      $server->discord_id = $request->discordid;
       $server->last_wipe = $request->lastwipe;
 
       $server->save();

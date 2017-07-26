@@ -126,6 +126,15 @@
 
             <div class="form-group">
 
+              <label for="discordid" class="col-md-4 control-label">Discord ID</label>
+
+              <div class="col-md-6">
+                <input id="discordid" type="number" step="1" class="form-control" name="discordid" value="{{ old('discordid') }}">
+              </div>
+            </div>
+
+            <div class="form-group">
+
               <label for="lastwipe" class="col-md-4 control-label">Last Wipe</label>
 
               <div class="col-md-6">
