@@ -42,7 +42,7 @@ class ServerPolicy
      */
     public function update(User $user, Server $server)
     {
-        //
+        return $user->id === $server->user_id;
     }
 
     /**

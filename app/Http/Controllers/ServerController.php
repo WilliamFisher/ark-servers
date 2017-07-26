@@ -76,7 +76,7 @@ class ServerController extends Controller
       $this->validate($request, [
         'name' => 'bail|required|string|unique:servers|max:16',
         'description' => 'required|string|max:500',
-        'rules' => 'string',
+        'rules' => 'nullable|string',
         'platform' => ['required', Rule::in(['Xbox', 'Playstation'])],
         'ispvp' => 'nullable|boolean',
         'ispve' => 'nullable|boolean',
@@ -93,7 +93,12 @@ class ServerController extends Controller
       $server->user_id = Auth::user()->id;
       $server->name = $request->name;
       $server->description = $request->description;
-      $server->rules = $request->rules;
+      if($request->rules == null)
+      {
+        $server->rules = 'None';
+      }else {
+        $server->rules = $request->rules;
+      }
       $server->platform = $request->platform;
       if($request->ispvp == null)
       {
@@ -138,6 +143,8 @@ class ServerController extends Controller
      */
     public function edit(Server $server)
     {
+      $this->authorize('update', $server);
+
       return view('server.edit', compact('server'));
     }
 
@@ -150,6 +157,54 @@ class ServerController extends Controller
      */
     public function update(Request $request, Server $server)
     {
+      $this->authorize('update', $server);
+
+      $this->validate($request, [
+        'name' => 'bail|required|max:16|string|unique:servers,name,'.$server->id,
+        'description' => 'required|string|max:500',
+        'rules' => 'nullable|string',
+        'platform' => ['required', Rule::in(['Xbox', 'Playstation'])],
+        'ispvp' => 'nullable|boolean',
+        'ispve' => 'nullable|boolean',
+        'map' => ['required', Rule::in(['The Island', 'The Center', 'Scorched Earth', 'Ragnarok'])],
+        'xprate' => 'required|numeric',
+        'gatherrate' => 'required|numeric',
+        'tamerate' => 'required|numeric',
+        'breedingrate' => 'required|numeric',
+        'lastwipe' => 'required|date',
+      ]);
+
+      $server->name = $request->name;
+      $server->description = $request->description;
+      if($request->rules == null)
+      {
+        $server->rules = 'None';
+      }else {
+        $server->rules = $request->rules;
+      }
+      $server->platform = $request->platform;
+      if($request->ispvp == null)
+      {
+        $server->is_pvp = false;
+      }else{
+        $server->is_pvp = true;
+      }
+      if($request->ispve == null)
+      {
+        $server->is_pve = false;
+      }else {
+        $server->is_pve = true;
+      }
+      $server->map = $request->map;
+      $server->xp_rate = $request->xprate;
+      $server->gather_rate = $request->gatherrate;
+      $server->tame_rate = $request->tamerate;
+      $server->breeding_rate = $request->breedingrate;
+      $server->last_wipe = $request->lastwipe;
+
+      $server->save();
+
+      return redirect()->action('ServerController@show', ['id' => $server->id])->with('status', 'Successfully updated server.');
     }
 
     /**

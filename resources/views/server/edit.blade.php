@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">Edit Server</div>
+        <div class="panel-heading">Edit Server - {{ $server->name }}</div>
         <div class="panel-body">
           @if (count($errors) > 0)
               <div class="alert alert-danger">
@@ -16,7 +16,8 @@
                   </ul>
               </div>
           @endif
-          <form class="form-horizontal" role="form" method="POST" action="{{ route('servers.update') }}">
+          <form class="form-horizontal" role="form" method="POST" action="{{ route('servers.update', $server->id) }}">
+            {{ method_field('PATCH') }}
             {{ csrf_field() }}
             <div class="form-group">
 
@@ -39,12 +40,22 @@
 
             <div class="form-group">
 
+              <label for="rules" class="col-md-4 control-label">Rules</label>
+
+              <div class="col-md-6">
+                <input id="rules" type="text" class="form-control" placeholder="Seperate rules by a comma" name="rules" value="{{ $server->rules }}">
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
               <label for="platform" class="col-md-4 control-label">Platform</label>
 
               <div class="col-md-6">
-                <select id="platform" class="form-control" name="platform" value="{{ $server->platform }}">
-                  <option>Xbox</option>
-                  <option>Playstation</option>
+                <select id="platform" class="form-control" name="platform">
+                  <option @if($server->platform == 'Xbox') selected="selected" @endif>Xbox</option>
+                  <option @if($server->platform == 'Playstation') selected="selected" @endif>Playstation</option>
                 </select>
               </div>
             </div>
@@ -68,10 +79,11 @@
               <label for="map" class="col-md-4 control-label">Map</label>
 
               <div class="col-md-6">
-                <select id="map" class="form-control" name="map" value="{{ $server->map }}">
-                  <option>The Island</option>
-                  <option>The Center</option>
-                  <option>Scorched Earth</option>
+                <select id="map" class="form-control" name="map">
+                  <option @if($server->map == 'The Island') selected="selected" @endif>The Island</option>
+                  <option @if($server->map == 'The Center') selected="selected" @endif>The Center</option>
+                  <option @if($server->map == 'Scorched Earth') selected="selected" @endif>Scorched Earth</option>
+                  <option @if($server->map == 'Ragnarok') selected="selected" @endif>Ragnarok</option>
                 </select>
               </div>
 
@@ -118,7 +130,7 @@
               <label for="lastwipe" class="col-md-4 control-label">Last Wipe</label>
 
               <div class="col-md-6">
-                <input id="lastwipe" type="text" class="form-control" name="lastwipe" value="{{ $server->last_wipe }}" required>
+                <date-component></date-component>
               </div>
             </div>
 

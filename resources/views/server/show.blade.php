@@ -27,14 +27,6 @@
                 </a>
               </li>
               <li role="presentation">
-                <a href="#settings" class="hidden-xs" aria-controls="rates" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Settings
-                </a>
-                <a href="#settings" class="hidden-lg hidden-md hidden-sm" aria-controls="rates" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                </a>
-              </li>
-              <li role="presentation">
                 <a href="#comments" class="hidden-xs" aria-controls="comments" role="tab" data-toggle="tab">
                   <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments
                 </a>
@@ -61,7 +53,16 @@
                 </a>
               </li>
               @endif
+
               @if(!Auth::guest() && Auth::user()->id == $server->user_id)
+              <li>
+                <a class="hidden-xs" href="{{ route('servers.edit', $server->id) }}">
+                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Edit
+                </a>
+                <a href="{{ route('servers.edit', $server->id) }}" class="hidden-lg hidden-md hidden-sm">
+                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                </a>
+              </li>
               <li role="presentation">
                 <a class="hidden-xs" href="#delete" aria-controls="delete" role="tab" data-toggle="tab">
                   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
@@ -76,7 +77,15 @@
               <div role="tabpanel" class="tab-pane active" id="info">
                 <h4>Description</h4>
                 <p>{{ $server->description }}</p>
-                <br>
+                <hr>
+                <h4>Rates</h4>
+                <ul class="list-group">
+                  <li class="list-group-item">{{ $server->map }}</li>
+                  <li class="list-group-item">XP: {{ $server->xp_rate }}x</li>
+                  <li class="list-group-item">Gather: {{ $server->gather_rate }}x</li>
+                  <li class="list-group-item">Tame: {{ $server->tame_rate }}x</li>
+                  <li class="list-group-item">Breeding: {{ $server->breeding_rate }}x</li>
+                </ul>
                 <h4>Rules</h4>
                 <div id="rules_section"></div>
                 <br>
@@ -85,17 +94,6 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="DELETE">
                 </form>
-              </div>
-              <div role="tabpanel" class="tab-pane" id="settings">
-                <h4>Settings</h4>
-                <hr>
-                <ul class="list-group">
-                  <li class="list-group-item">{{ $server->map }}</li>
-                  <li class="list-group-item">XP: {{ $server->xp_rate }}x</li>
-                  <li class="list-group-item">Gather: {{ $server->gather_rate }}x</li>
-                  <li class="list-group-item">Tame: {{ $server->tame_rate }}x</li>
-                  <li class="list-group-item">Breeding: {{ $server->breeding_rate }}x</li>
-                </ul>
               </div>
               <div role="tabpanel" class="tab-pane" id="comments">
                 <h4>Comments</h4>
