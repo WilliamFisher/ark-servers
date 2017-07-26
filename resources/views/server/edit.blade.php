@@ -130,7 +130,7 @@
               <label for="discordid" class="col-md-4 control-label">Discord ID</label>
 
               <div class="col-md-6">
-                <input id="discordid" type="number" step="1" class="form-control" name="discordid" value="{{ old('discordid') }}">
+                <input id="discordid" type="number" step="1" class="form-control" name="discordid" value="{{ $server->discord_id }}">
               </div>
             </div>
 

@@ -14,7 +14,7 @@ class AddDiscordidToServersTable extends Migration
     public function up()
     {
         Schema::table('servers', function (Blueprint $table) {
-            $table->bigInteger('discord_id')->nullable;
+            $table->bigInteger('discord_id')->nullable();
         });
     }
 

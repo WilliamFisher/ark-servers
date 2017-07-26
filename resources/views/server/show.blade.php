@@ -102,7 +102,11 @@
                     </div>
                     <div class="col-md-4">
                       <h4>Discord</h4>
+                      @if($server->discord_id)
                       <iframe src="https://discordapp.com/widget?id={{ $server->discord_id }}&theme=light" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
+                      @else
+                      <p>This server has not integrated Discord 😞</p>
+                      @endif
                     </div>
                   </div>
                 </div>

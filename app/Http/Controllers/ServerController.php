@@ -85,7 +85,7 @@ class ServerController extends Controller
         'gatherrate' => 'required|numeric',
         'tamerate' => 'required|numeric',
         'breedingrate' => 'required|numeric',
-        'discordid' => 'numeric',
+        'discordid' => 'nullable|numeric',
         'lastwipe' => 'required|date',
       ]);
 
