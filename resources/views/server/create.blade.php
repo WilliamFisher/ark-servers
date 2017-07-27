@@ -126,10 +126,10 @@
 
             <div class="form-group">
 
-              <label for="discordid" class="col-md-4 control-label">Discord ID</label>
+              <label for="discordid" class="col-md-4 control-label">Discord Invite</label>
 
               <div class="col-md-6">
-                <input id="discordid" type="number" step="1" class="form-control" placeholder="Google 'Enable Discord Widgets'" name="discordid" value="{{ old('discordid') }}">
+                <input id="discordinvite" type="text" class="form-control" placeholder="Set your invite to never expire" name="discordinvite" value="{{ old('discordinvite') }}">
               </div>
             </div>
 

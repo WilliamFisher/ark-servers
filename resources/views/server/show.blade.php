@@ -101,15 +101,14 @@
                       </form>
                     </div>
                     <div class="col-md-3">
-                      @if($server->discord_id)
+                      @if($server->discord_invite)
                       <h4>Discord</h4>
-                      <iframe src="https://discordapp.com/widget?id={{ $server->discord_id }}&theme=light" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
+                      <p><a class="btn btn-primary" href="{{ $server->discord_invite }}">Join Discord</a></p>
                       @elseif(!Auth::guest() && Auth::user()->id == $server->user_id)
                       <h4>Setup Discord</h4>
                       <p>This is only visable to you.</p>
                       <p>You have not setup Discord integration! Discord is a great place to house your server community.</p>
-                      <p>Learn how to add the widget <a href="https://blog.discordapp.com/add-the-discord-widget-to-your-site-d45ffcd718c6">here
-                      </a> and copy the Discord Server ID into the Discord ID field for you sever.</p>
+                      <p>Create an instant invite and set it to expire 'Never'. Then paste the link into the Discord invite field when you edit your server.</p>
                       @endif
                     </div>
                   </div>

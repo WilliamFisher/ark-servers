@@ -127,10 +127,10 @@
 
             <div class="form-group">
 
-              <label for="discordid" class="col-md-4 control-label">Discord ID</label>
+              <label for="discordid" class="col-md-4 control-label">Discord Invite</label>
 
               <div class="col-md-6">
-                <input id="discordid" type="number" step="1" class="form-control" name="discordid" value="{{ $server->discord_id }}">
+                <input id="discordinvite" type="text" class="form-control" name="discordinvite" value="{{ $server->discord_invite }}">
               </div>
             </div>
 
