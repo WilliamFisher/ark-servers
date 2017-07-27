@@ -169,8 +169,13 @@ $(document).ready(function() {
 </script>
 
 <script>
+function decodeHTML(html) {
+  var txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
 $(document).ready(function() {
-  var rules = '{{ $server->rules }}';
+  var rules = decodeHTML('{{ $server->rules }}');
   var array = rules.split(',');
 
   function makeUL(array) {
