@@ -17,7 +17,7 @@
                 </h3>
               </div>
               <div class="panel-body text-center">
-                <p style="height:50px;">{{ str_limit($server->description, $limit = 80, $end = '...') }}</p><hr>
+                <p style="height:50px;">{{ str_limit($server->description, $limit = 115, $end = '...') }}</p><hr>
                 <p>{{ $server->map }}</p><hr>
                 <p>{{ $server->xp_rate }}x XP Rate</p><hr>
                 <p>{{ $server->gather_rate }}x Gather Rate</p><hr>
