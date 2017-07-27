@@ -77,7 +77,7 @@
               <div role="tabpanel" class="tab-pane active" id="info">
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                       <h4>Description</h4>
                       <p>{{ $server->description }}</p>
                       <hr>
