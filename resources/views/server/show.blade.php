@@ -27,11 +27,11 @@
                 </a>
               </li>
               <li role="presentation">
-                <a href="#comments" class="hidden-xs" aria-controls="comments" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments
+                <a href="#rate" class="hidden-xs" aria-controls="rate" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Rate
                 </a>
-                <a href="#comments" class="hidden-lg hidden-md hidden-sm" aria-controls="comments" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <a href="#rate" class="hidden-lg hidden-md hidden-sm" aria-controls="rate" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 </a>
               </li>
               @if(!$server->liked())
@@ -100,48 +100,26 @@
                           <input type="hidden" name="_method" value="DELETE">
                       </form>
                     </div>
-                    <div class="col-md-4">
-                      <h4>Discord</h4>
+                    <div class="col-md-3">
                       @if($server->discord_id)
+                      <h4>Discord</h4>
                       <iframe src="https://discordapp.com/widget?id={{ $server->discord_id }}&theme=light" width="300" height="400" allowtransparency="true" frameborder="0"></iframe>
-                      @else
-                      <p>This server has not integrated Discord 😞</p>
+                      @elseif(!Auth::guest() && Auth::user()->id == $server->user_id)
+                      <h4>Setup Discord</h4>
+                      <p>This is only visable to you.</p>
+                      <p>You have not setup Discord integration! Discord is a great place to house your server community.</p>
+                      <p>Learn how to add the widget <a href="https://blog.discordapp.com/add-the-discord-widget-to-your-site-d45ffcd718c6">here
+                      </a> and copy the Discord Server ID into the Discord ID field for you sever.</p>
                       @endif
                     </div>
                   </div>
                 </div>
               </div>
-              <div role="tabpanel" class="tab-pane" id="comments">
-                <h4>Comments</h4>
-                @if(Auth::user())
-                <div class="card">
-                  <div class="card-block">
-                    <form method="POST" action="/servers/{{ $server->id }}/comments">
-
-                      {{ csrf_field() }}
-
-                      <div class="form-group">
-                        <textarea class="form-control" name="body" placeholder="Leave a comment." required></textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Add Comment</button>
-                      </div>
-                    </form>
-                  </div>
+              <div role="tabpanel" class="tab-pane" id="rate">
+                <h4>Rate</h4>
+                <div class="well">
+                  <p>Coming soon! The old comment system was basic and vulnerable to spam/salty players. A new rating system will replace it.</p>
                 </div>
-                <hr>
-                @elseif(Auth::guest())
-                <p><a href="{{ url('/login') }}">Login</a> to post a comment.</p>
-                <hr>
-                @endif
-                <ul class="list-group">
-                @foreach($server->comments as $comment)
-                  <li class="list-group-item">
-                    <strong>{{ $comment->user->name }}:</strong> {{ $comment->body }} - {{ $comment->created_at->diffForHumans() }}
-                  </li>
-                @endforeach
-                </ul>
               </div>
               <div role="tabpanel" class="tab-pane" id="delete">
                 <h4>Confirm Delete</h4>
