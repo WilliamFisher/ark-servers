@@ -53,7 +53,11 @@
                             <li><a href="{{ url('servers/playstation') }}">Playstation</a></li>
                           </ul>
                         </li>
+                        @if(Auth::check())
                         <li><a href="{{ url('dashboard') }}">My Servers</a></li>
+                        @else
+                        <li><a href="{{ route('servers.create') }}">Add Server</a></li>
+                        @endif
                     </ul>
 
                     <form id="search-form" action="{{ route('servers.search') }}" class="navbar-form navbar-left" method="GET">
