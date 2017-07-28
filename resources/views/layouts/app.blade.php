@@ -10,6 +10,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @yield('headScripts')
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -19,7 +21,6 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    @yield('headScripts')
 </head>
 <body>
     <div id="app">

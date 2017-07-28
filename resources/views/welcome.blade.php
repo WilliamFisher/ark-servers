@@ -10,6 +10,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @include('shared.analytics')
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
@@ -20,7 +22,6 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    @include('shared.analytics')
 </head>
 
 <body>
