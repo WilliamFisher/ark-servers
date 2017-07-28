@@ -25,7 +25,7 @@
     </script>
 </head>
 
-<body>
+<body style="margin-bottom:0px;">
   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
