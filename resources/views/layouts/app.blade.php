@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Ark Servers') }}</title>
 
     @yield('headScripts')
 
@@ -38,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/servers') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Ark Servers') }}
                     </a>
                 </div>
 
