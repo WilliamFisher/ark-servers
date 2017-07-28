@@ -49,8 +49,8 @@
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Servers <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a href="{{ url('servers') }}">All Servers</a></li>
-                            <li><a href="{{ url('servers?platform=xbox') }}">Xbox</a></li>
-                            <li><a href="{{ url('servers?platform=playstation') }}">Playstation</a></li>
+                            <li><a href="{{ url('servers/xbox') }}">Xbox</a></li>
+                            <li><a href="{{ url('servers/playstation') }}">Playstation</a></li>
                           </ul>
                         </li>
                         <li><a href="{{ url('dashboard') }}">My Servers</a></li>

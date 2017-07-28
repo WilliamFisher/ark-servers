@@ -13,7 +13,7 @@ class ServerController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth')->except('index','show', 'search');
+    $this->middleware('auth')->except('index', 'xbox', 'playstation', 'show', 'search');
   }
     /**
      * Display a listing of the resource.
@@ -24,10 +24,19 @@ class ServerController extends Controller
     {
       $servers = Server::paginate(9);
 
-      if ($platform = request('platform'))
-      {
-        $servers = Server::ofPlatform($platform)->paginate(9);
-      }
+      return view('server.index', compact('servers'));
+    }
+
+    public function xbox()
+    {
+      $servers = Server::ofPlatform('xbox')->paginate(9);
+
+      return view('server.index', compact('servers'));
+    }
+
+    public function playstation()
+    {
+      $servers = Server::ofPlatform('playstation')->paginate(9);
 
       return view('server.index', compact('servers'));
     }
