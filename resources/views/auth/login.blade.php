@@ -59,6 +59,11 @@
                                 </a>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group">
+                          <div class="col-md-8 col-md-offset-4">
+                            <a href="{{ route('register') }}">Sign up for an account</a>
+                        </div>
                     </form>
                 </div>
             </div>
