@@ -4,12 +4,14 @@ namespace App;
 
 use Laravel\Scout\Searchable;
 use \Conner\Likeable\LikeableTrait;
+use willvincent\Rateable\Rateable;
 use Illuminate\Database\Eloquent\Model;
 
 class Server extends Model
 {
     use LikeableTrait;
     use Searchable;
+    use Rateable;
 
     protected $dates = [
       'created_at',

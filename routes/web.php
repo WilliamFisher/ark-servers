@@ -19,14 +19,17 @@ Route::get('/feedback', function () {
   return view('typeform');
 });
 
+Route::get('/servers/{server}/rating', 'ServerController@getRating');
+
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
-Route::get('/servers/{id}/like', 'ServerController@likeserver');
-Route::get('/servers/{id}/unlike', 'ServerController@unlikeserver');
+Route::get('/servers/{server}/like', 'ServerController@likeserver');
+Route::get('/servers/{server}/unlike', 'ServerController@unlikeserver');
 Route::get('/servers/xbox', 'ServerController@xbox');
 Route::get('/servers/playstation', 'ServerController@playstation');
+Route::get('/servers/{server}/rate', 'ServerController@rateserver');
 
 Route::resource('servers','ServerController');

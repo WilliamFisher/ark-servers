@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Auth;
 use DB;
+use willvincent\Rateable\Rating;
 
 class ServerController extends Controller
 {
@@ -41,6 +42,19 @@ class ServerController extends Controller
       return view('server.index', compact('servers'));
     }
 
+    public function rateserver(Request $request, Server $server)
+    {
+      if($request->rating > 5)
+      {
+        $request->rating = 5;
+      }
+      $rating = new Rating;
+      $rating->rating = $request->rating;
+      $rating->user_id =  Auth::id();
+
+      $server->ratings()->save($rating);
+    }
+
     public function search(Request $request)
     {
       $servers = Server::search($request->search)->paginate(9);
@@ -48,17 +62,15 @@ class ServerController extends Controller
       return view('server.index', compact('servers'));
     }
 
-    public function likeserver($id)
+    public function likeserver(Server $server)
     {
-      $server = Server::find($id);
       $server->like();
 
       return back()->with('status', 'Added server to favorites.');
     }
 
-    public function unlikeserver($id)
+    public function unlikeserver(Server $server)
     {
-      $server = Server::find($id);
       $server->unlike();
 
       return back()->with('status', 'Removed server from favorites.');

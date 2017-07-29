@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         \Conner\Likeable\LikeableServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
 
         /*
          * Application Service Providers...
