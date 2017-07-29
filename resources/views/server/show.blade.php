@@ -20,10 +20,10 @@
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active">
                 <a href="#info" class="hidden-xs" aria-controls="info" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Info
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Info
                 </a>
                 <a href="#info" class="hidden-lg hidden-md hidden-sm" aria-controls="info" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                 </a>
               </li>
               <li role="presentation">
@@ -57,10 +57,10 @@
               @if(!Auth::guest() && Auth::user()->id == $server->user_id)
               <li>
                 <a class="hidden-xs" href="{{ route('servers.edit', $server->id) }}">
-                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Edit
+                  <span class="glyphicon glyphicon-edit"></span> Edit
                 </a>
                 <a href="{{ route('servers.edit', $server->id) }}" class="hidden-lg hidden-md hidden-sm">
-                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-edit"></span>
                 </a>
               </li>
               <li role="presentation">
@@ -80,6 +80,7 @@
                     <div class="col-md-9">
                       <h4>Description</h4>
                       <p>{{ $server->description }}</p>
+                      <a href="" class="btn btn-primary btn-sm hidden-lg hidden-md hidden-sm">Join Discord</a>
                       <hr>
                     </div>
                     <div class="col-md-6">
@@ -102,8 +103,8 @@
                     </div>
                     <div class="col-md-3">
                       @if($server->discord_invite)
-                      <h4>Discord</h4>
-                      <p><a class="btn btn-primary" href="{{ $server->discord_invite }}">Join Discord</a></p>
+                      <h4 class="hidden-xs">Discord</h4>
+                      <p><a class="btn btn-primary hidden-xs" href="{{ $server->discord_invite }}">Join Discord</a></p>
                       @elseif(!Auth::guest() && Auth::user()->id == $server->user_id)
                       <h4>Setup Discord</h4>
                       <p>This is only visable to you.</p>
@@ -117,7 +118,7 @@
               <div role="tabpanel" class="tab-pane" id="rate">
                 <h4>Rate</h4>
                 <div class="well">
-                  <p>Coming soon! The old comment system was basic and vulnerable to spam/salty players. A new rating system will replace it.</p>
+                  <p>{{ $server->averageRating }}</p>
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="delete">
