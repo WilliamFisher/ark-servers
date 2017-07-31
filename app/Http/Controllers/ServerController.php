@@ -23,7 +23,7 @@ class ServerController extends Controller
      */
     public function index()
     {
-      $servers = Server::paginate(9);
+      $servers = Server::orderBy('average_rating', 'desc')->paginate(9);
 
       return view('server.index', compact('servers'));
     }
@@ -55,6 +55,10 @@ class ServerController extends Controller
                 ->where('rateable_id', $server->id)
                 ->update(['rating' => $request->value]);
 
+        $server->average_rating = $server->averageRating();
+
+        $server->save();
+
         return ('Thank you for updating your feedback!');
       }
 
@@ -63,6 +67,8 @@ class ServerController extends Controller
       $rating->user_id =  Auth::id();
 
       $server->ratings()->save($rating);
+
+      $server->average_rating = $server->averageRating();
 
       return ("Thank you for your feedback!");
     }
