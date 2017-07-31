@@ -27,11 +27,11 @@
                 </a>
               </li>
               <li role="presentation">
-                <a href="#rate" class="hidden-xs" aria-controls="rate" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Rate
+                <a href="#share" class="hidden-xs" aria-controls="share" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Share
                 </a>
-                <a href="#rate" class="hidden-lg hidden-md hidden-sm" aria-controls="rate" role="tab" data-toggle="tab">
-                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <a href="#share" class="hidden-lg hidden-md hidden-sm" aria-controls="share" role="tab" data-toggle="tab">
+                  <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
                 </a>
               </li>
               @if(!$server->liked())
@@ -80,6 +80,11 @@
                     <div class="col-md-9">
                       <h4>Description</h4>
                       <p>{{ $server->description }}</p>
+                      @if($server->averageRating)
+                      <star-rating :show-rating="true" :star-size="20" :rating="{{ $server->averageRating }}" v-on:rating-selected="setRating"></star-rating>
+                      @else
+                      <star-rating :show-rating="true" :star-size="20" :rating="0" v-on:rating-selected="setRating"></star-rating>
+                      @endif
                       <a href="" class="btn btn-primary btn-sm hidden-lg hidden-md hidden-sm">Join Discord</a>
                       <hr>
                     </div>
@@ -115,10 +120,10 @@
                   </div>
                 </div>
               </div>
-              <div role="tabpanel" class="tab-pane" id="rate">
-                <h4>Rate</h4>
+              <div role="tabpanel" class="tab-pane" id="share">
+                <h4>Share</h4>
                 <div class="well">
-                  <p>{{ $server->averageRating }}</p>
+                  <div class="addthis_inline_share_toolbox"></div>
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="delete">
@@ -178,4 +183,5 @@ $(document).ready(function() {
   $( "#rules_section" ).append(makeUL(array));
 });
 </script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-597f4311f55d7401"></script>
 @endsection

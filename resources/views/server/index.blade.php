@@ -34,7 +34,12 @@
                 <p>{{ $server->map }}</p><hr>
                 <p>{{ $server->xp_rate }}x XP Rate</p><hr>
                 <p>{{ $server->gather_rate }}x Gather Rate</p><hr>
-                <p>{{ $server->tame_rate }}x Tame Rate</p>
+                <p>{{ $server->tame_rate }}x Tame Rate</p><hr>
+                @if($server->averageRating)
+                <star-rating :inline="true" :show-rating="false" :read-only="true" :star-size="20" :rating="{{ $server->averageRating }}"></star-rating>
+                @else
+                <star-rating :inline="true" :show-rating="false" :read-only="true" :star-size="20" :rating="0"></star-rating>
+                @endif
               </div>
             </div>
           </div>

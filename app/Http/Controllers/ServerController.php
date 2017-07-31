@@ -44,15 +44,27 @@ class ServerController extends Controller
 
     public function rateserver(Request $request, Server $server)
     {
-      if($request->rating > 5)
+      if($request->value > 5)
       {
         $request->rating = 5;
       }
+
+      if($server->userSumRating)
+      {
+        Rating::where('user_id', Auth::id())
+                ->where('rateable_id', $server->id)
+                ->update(['rating' => $request->value]);
+
+        return ('Thank you for updating your feedback!');
+      }
+
       $rating = new Rating;
-      $rating->rating = $request->rating;
+      $rating->rating = $request->value;
       $rating->user_id =  Auth::id();
 
       $server->ratings()->save($rating);
+
+      return ("Thank you for your feedback!");
     }
 
     public function search(Request $request)

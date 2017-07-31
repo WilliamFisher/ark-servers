@@ -1,4 +1,6 @@
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vuejs-datepicker'
+import StarRating from 'vue-star-rating'
+import swal from 'sweetalert2'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -14,6 +16,7 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('star-rating', StarRating);
 Vue.component('date-component', {
   components: {
     Datepicker
@@ -22,5 +25,31 @@ Vue.component('date-component', {
 });
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    methods: {
+      setRating: function (rating) {
+        this.rating = rating;
+        var pathArray = window.location.pathname.split('/');
+        var serverid = pathArray[2];
+        axios.get('/servers/' + serverid + '/rate', {
+          params: {
+            value: this.rating
+          }
+        })
+        .then(function (response) {
+          swal('Success', response.data, 'success')
+        })
+        .catch(function (error) {
+          if(error.response.status == 401)
+          {
+            swal('Error', 'Please login or register.', 'error')
+          }else {
+            swal('Error', error.message, 'error')
+          }
+        });
+      },
+    },
+    data: {
+      rating: 0
+    }
 });
