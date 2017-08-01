@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Ark Servers') }}</title>
 
-    @yield('headScripts')
+    @include('shared.analytics')
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -21,6 +21,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    @yield('headScripts')
 </head>
 <body>
     <div id="app">
