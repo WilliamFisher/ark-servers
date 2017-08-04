@@ -30,14 +30,14 @@ class ServerController extends Controller
 
     public function xbox()
     {
-      $servers = Server::ofPlatform('xbox')->paginate(9);
+      $servers = Server::ofPlatform('xbox')->orderBy('average_rating', 'desc')->paginate(9);
 
       return view('server.index', compact('servers'));
     }
 
     public function playstation()
     {
-      $servers = Server::ofPlatform('playstation')->paginate(9);
+      $servers = Server::ofPlatform('playstation')->orderBy('average_rating', 'desc')->paginate(9);
 
       return view('server.index', compact('servers'));
     }
