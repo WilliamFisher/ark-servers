@@ -69,6 +69,7 @@ class ServerController extends Controller
       $server->ratings()->save($rating);
 
       $server->average_rating = $server->averageRating();
+      $server->save();
 
       return ("Thank you for your feedback!");
     }
