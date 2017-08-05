@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '{{ $server->name }}')
+@section('title', 'View Server')
 
 @section('content')
 <div class="container">
