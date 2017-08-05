@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Ark Servers - Xbox Servers - Playstation Servers</title>
+    <title>Ark Servers - Xbox and Playstation Servers</title>
 
     @include('shared.analytics')
 
