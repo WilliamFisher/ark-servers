@@ -12,6 +12,13 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group">
+                          <div class="col-md-6 col-md-offset-4 text-center">
+                              <a href="{{ url('/login/redirect/google') }}" class="btn" style="background-color:#d34836;color:white;">Login with Google</a>
+                              <a href="#" class="btn" style="background-color:#ffcc11;color:black;">Login with Nitrado</a>
+                          </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

@@ -10,8 +10,11 @@
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "5.4.*",
         "laravel/scout": "^3.0",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "rtconner/laravel-likeable": "~1.2",
+        "socialiteproviders/google": "^3.0",
+        "socialiteproviders/manager": "~3.0",
         "willvincent/laravel-rateable": "~1.0"
     },
     "require-dev": {

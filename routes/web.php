@@ -23,6 +23,9 @@ Route::get('/servers/{server}/rating', 'ServerController@getRating');
 
 Auth::routes();
 
+Route::get('/login/redirect/{provider}', 'SocialAuthController@redirect');
+Route::get('/login/callback/{provider}', 'SocialAuthController@callback');
+
 Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
