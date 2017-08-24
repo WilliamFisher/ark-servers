@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
       \SocialiteProviders\Manager\SocialiteWasCalled::class => [
         'SocialiteProviders\Google\GoogleExtendSocialite@handle',
-        'Nitrado\NitradoExtendSocialite@handle',
+        'App\Providers\Nitrado\NitradoExtendSocialite@handle',
       ],
     ];
 
