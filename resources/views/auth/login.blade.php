@@ -15,7 +15,7 @@
                         <div class="form-group">
                           <div class="col-md-6 col-md-offset-4 text-center">
                               <a href="{{ url('/login/redirect/google') }}" class="btn" style="background-color:#d34836;color:white;">Login with Google</a>
-                              <!--<a href="{{ url('/login/redirect/nitrado') }}" class="btn" style="background-color:#ffcc11;color:black;">Login with Nitrado</a>-->
+                              <a href="{{ url('/login/redirect/nitrado') }}" class="btn" style="background-color:#ffcc11;color:black;">Login with Nitrado</a>
                           </div>
                         </div>
 
