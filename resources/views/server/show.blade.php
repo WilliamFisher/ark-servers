@@ -87,7 +87,9 @@
                       @else
                       <star-rating :show-rating="true" :star-size="20" :rating="0" v-on:rating-selected="setRating"></star-rating>
                       @endif
+                      @if($server->discord_invite)
                       <a href="" class="btn btn-primary btn-sm hidden-lg hidden-md hidden-sm">Join Discord</a>
+                      @endif
                       <hr>
                     </div>
                     <div class="col-md-6">
