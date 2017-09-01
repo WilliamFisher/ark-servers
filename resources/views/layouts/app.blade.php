@@ -66,7 +66,7 @@
                       <div class="form-group">
                         <input type="text" name="search" class="form-control" placeholder="Search">
                       </div>
-                      <button type="submit" class="btn btn-default">Search</button>
+                      <button type="submit" class="btn btn-default hidden-xs">Search</button>
                     </form>
 
                     <!-- Right Side Of Navbar -->
