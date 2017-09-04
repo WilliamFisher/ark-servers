@@ -31,6 +31,7 @@ Route::get('/dashboard', 'HomeController@index');
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
 Route::get('/servers/{server}/like', 'ServerController@likeserver');
 Route::get('/servers/{server}/unlike', 'ServerController@unlikeserver');
+Route::get('/servers/{server}/claim', 'ServerController@claim');
 Route::get('/servers/xbox', 'ServerController@xbox');
 Route::get('/servers/playstation', 'ServerController@playstation');
 Route::get('/servers/{server}/rate', 'ServerController@rateserver');

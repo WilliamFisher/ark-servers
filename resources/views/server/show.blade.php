@@ -90,6 +90,9 @@
                       @if($server->discord_invite)
                       <a href="" class="btn btn-primary btn-sm hidden-lg hidden-md hidden-sm">Join Discord</a>
                       @endif
+                      @if($server->platform == 'Xbox' && $server->claimed == false)
+                      <button  class="btn btn-primary btn-sm" v-on:click="showClaimDialog">Claim Server</button>
+                      @endif
                       <hr>
                     </div>
                     <div class="col-md-6">

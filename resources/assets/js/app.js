@@ -48,6 +48,57 @@ const app = new Vue({
           }
         });
       },
+      showClaimDialog: function () {
+        var pathArray = window.location.pathname.split('/');
+        var serverid = pathArray[2];
+        swal({
+          title: 'Claim your server',
+          text: "Add 'arkservers:" + serverid + "' to the server's bio.",
+          showCancelButton: true,
+          confirmButtonText: 'Submit',
+          showLoaderOnConfirm: true,
+          preConfirm: function (value) {
+            return new Promise(function (resolve, reject) {
+              setTimeout(function() {
+                if (value.length > 16) {
+                  reject('Too many characters.')
+                } else {
+                  axios.get('/servers/' + serverid + '/claim')
+                  .then(function (response) {
+                    resolve(response.data)
+                  })
+                  .catch(function (error) {
+                    if(error.response.status == 401)
+                    {
+                      swal('Error', 'Please login or register.', 'error')
+                    }
+                    else if (error.response.status == 500)
+                    {
+                      swal('Error', 'Server gamertag could not be found.', 'error')
+                    }
+                    else
+                    {
+                      swal('Error', error.message, 'error')
+                    }
+                  })
+                }
+              }, 2000)
+            })
+          },
+          allowOutsideClick: false
+        }).then(function (value) {
+          if(value == 'Success')
+          {
+            swal({
+              type: 'success',
+              title: 'Success!',
+              text: 'Success! The server is yours.'
+            })
+          } else {
+            swal('Error', 'Could not find code in server bio.', 'error')
+          }
+        })
+      },
     },
     data: {
       rating: 0

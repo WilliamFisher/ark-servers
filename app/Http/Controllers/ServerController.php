@@ -42,11 +42,49 @@ class ServerController extends Controller
       return view('server.index', compact('servers'));
     }
 
+    public function claim(Request $request, Server $server)
+    {
+      $key = env('XBOX_API_KEY');
+      $client = new \GuzzleHttp\Client(['base_uri' => 'https://xboxapi.com/v2/']);
+      $res = $client->request('GET', 'xuid/'.$server->name, [
+        'headers' => [
+          'X-AUTH' => $key
+        ]
+      ]);
+      if($res->getStatusCode() == 200)
+      {
+        $xuid = $res->getBody();
+      }
+      else
+      {
+        return('Could not find gamertag');
+      }
+
+      $res = $client->request('GET', "{$xuid}/gamercard", [
+        'headers' => [
+          'X-AUTH' => $key
+        ]
+      ]);
+      $json = json_decode($res->getBody(), true);
+      $bio = $json['bio'];
+
+      if(strpos($bio, 'arkservers:' .$server->id) !== false)
+      {
+        $server->user_id = Auth::user()->id;
+        $server->claimed = true;
+        $server->save();
+        return ('Success');
+      }
+      else {
+        return ('Could not find code');
+      }
+    }
+
     public function rateserver(Request $request, Server $server)
     {
       if($request->value > 5)
       {
-        $request->rating = 5;
+        $request->value = 5;
       }
 
       if($server->userSumRating)
@@ -160,6 +198,7 @@ class ServerController extends Controller
       $server->breeding_rate = $request->breedingrate;
       $server->discord_invite = $request->discordinvite;
       $server->last_wipe = $request->lastwipe;
+      $server->claimed = true;
 
       $server->save();
 
@@ -245,6 +284,7 @@ class ServerController extends Controller
       $server->breeding_rate = $request->breedingrate;
       $server->discord_invite = $request->discordinvite;
       $server->last_wipe = $request->lastwipe;
+      $server->claimed = true;
 
       $server->save();
 
