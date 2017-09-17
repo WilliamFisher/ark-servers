@@ -18,9 +18,15 @@
                     @foreach($servers as $server)
   									<tr data-status="green">
   										<td @if(!auth()->check()) class="hidden-xs" @endif>
-  											<a href="javascript:;" class="star">
+                        @if($server->liked())
+                        <a href="/servers/{{ $server->id }}/unlike" class="star-filled">
   												<i class="glyphicon glyphicon-star"></i>
   											</a>
+                        @else
+                        <a href="/servers/{{ $server->id }}/like" class="star">
+  												<i class="glyphicon glyphicon-star"></i>
+  											</a>
+                        @endif
   										</td>
   										<td>
   											<div class="server">
