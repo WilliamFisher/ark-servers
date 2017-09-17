@@ -7,32 +7,60 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
-          <div class="page-header"><h3>View Servers</h3></div>
-
-          @foreach($servers as $server)
-          <div class="col-md-4">
-            <div class="panel @if($server->platform == 'Xbox') panel-success @endif @if($server->platform == 'Playstation') panel-primary @endif">
-              <div class="panel-heading">
-                <div class="pull-right">@if($server->is_pvp)<span class="badge">PVP</span>@endif @if($server->is_pve)<span class="badge">PVE</span>@endif</div>
-                <h3 class="panel-title">
-                  <a href="{{ url('servers/' . $server->id) }}">{{ $server->name }}</a>
-                </h3>
-              </div>
-              <div class="panel-body text-center">
-                <p style="height:50px;">{{ str_limit($server->description, $limit = 100, $end = '...') }}</p><hr>
-                <p>{{ $server->map }}</p><hr>
-                <p>{{ $server->xp_rate }}x XP Rate</p><hr>
-                <p>{{ $server->gather_rate }}x Gather Rate</p><hr>
-                <p>{{ $server->tame_rate }}x Tame Rate</p><hr>
-                @if($server->averageRating)
-                <star-rating :inline="true" :show-rating="false" :read-only="true" :star-size="20" :rating="{{ $server->averageRating }}"></star-rating>
-                @else
-                <star-rating :inline="true" :show-rating="false" :read-only="true" :star-size="20" :rating="0"></star-rating>
-                @endif
-              </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="table-container">
+  							<table class="table table-filter">
+  								<tbody>
+                    <tr>
+                      <h3>View Servers</h3>
+                    </tr>
+                    @foreach($servers as $server)
+  									<tr data-status="green">
+  										<td @if(!auth()->check()) class="hidden-xs" @endif>
+  											<a href="javascript:;" class="star">
+  												<i class="glyphicon glyphicon-star"></i>
+  											</a>
+  										</td>
+  										<td>
+  											<div class="server">
+  												<div class="server-body">
+  													<h4 class="title">
+  														<a class="{{ strtolower($server->platform) }}" href="{{ url('servers/' . $server->id) }}">{{ $server->name }}</a>
+  													</h4>
+  													<p class="summary hidden-xs">{{ str_limit($server->description, $limit = 100, $end = '...') }}</p>
+                            <div class="hidden-lg hidden-md hidden-sm">
+                              <p class="server-rates">{{ $server->xp_rate }}x XP</p>
+                              <p class="server-rates">{{ $server->gather_rate }}x Gather</p>
+                              <p class="server-rates">{{ $server->tame_rate }}x Taming</p>
+                            </div>
+  												</div>
+  											</div>
+  										</td>
+                      <td class="hidden-xs">
+                        <div class="server">
+                          <div class="server-body">
+                            <p class="server-meta">{{ $server->xp_rate }}x XP</p>
+                            <p class="server-meta">{{ $server->gather_rate }}x Gather</p>
+                            <p class="server-meta">{{ $server->tame_rate }}x Taming</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="server">
+                          <div class="server-info">
+                            <h4 class="server-meta">{{ $server->map }}</h4>
+                            <p class="server-meta">Wiped {{ $server->last_wipe->diffForHumans() }}</p>
+                          <div>
+                        </div>
+                      </td>
+  									</tr>
+                    @endforeach
+  								</tbody>
+  							</table>
+						   </div>
             </div>
           </div>
-          @endforeach
         </div>
     </div>
 
