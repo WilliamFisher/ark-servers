@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'View Servers')
+@section('title', $title)
 
 @section('content')
 <div class="container">
@@ -13,7 +13,7 @@
   							<table class="table table-filter">
   								<tbody>
                     <tr>
-                      <h3>View Servers</h3>
+                      <h3>{{ $title }}</h3>
                     </tr>
                     @foreach($servers as $server)
   									<tr data-status="green">
