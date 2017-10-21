@@ -77,11 +77,12 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h1 class="brand-heading">Ark Servers</h1>
-            <p>
-              <a href="{{ url('/servers') }}" class="btn btn-default btn-lg">All Servers</a>
-              <a href="{{ url('/servers/xbox') }}" class="btn btn-success btn-lg">Xbox Servers</a>
-              <a href="{{ url('/servers/playstation') }}" class="btn btn-primary btn-lg">Playstation Servers</a>
-            </p>
+            <h3 class="hidden-xs">
+              <a href="{{ url('/servers/xbox') }}" style="background-color: rgba(0, 0, 0, 0.53);padding:8px;color:#5dc21e;">Xbox Servers</a>
+              <a href="{{ url('/servers/playstation') }}" style="background-color: rgba(0, 0, 0, 0.53);padding:8px;color:#005df7;">Playstation Servers</a>
+            </h3>
+            <h3 class="hidden-lg hidden-md hidden-sm"><a href="{{ url('/servers/xbox') }}" style="background-color: rgba(0, 0, 0, 0.53);color:#5dc21e;padding:8px;">Xbox Servers</a></h3>
+            <h3 class="hidden-lg hidden-md hidden-sm"><a href="{{ url('/servers/playstation') }}" style="background-color: rgba(0, 0, 0, 0.53);color:#005df7;margin-top:10px;padding:8px;">Playstation Servers</a></h3>
           </div>
         </div>
       </div>
