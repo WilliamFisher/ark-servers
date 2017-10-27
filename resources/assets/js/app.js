@@ -15,7 +15,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
 Vue.component('star-rating', StarRating);
 Vue.component('date-component', {
   components: {
