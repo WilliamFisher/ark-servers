@@ -32,7 +32,7 @@
   											<div class="server">
   												<div class="server-body">
   													<h4 class="title">
-  														<a class="{{ strtolower($server->platform) }}" href="{{ url('servers/' . $server->id) }}">{{ $server->name }}</a>
+  														<a class="{{ strtolower($server->platform) }}" href="{{ url('servers/' . $server->id) }}">{{ $server->name }} @if($server->rented)<span class="glyphicon glyphicon-flash" data-toggle="tooltip" data-placement="top" title="Rented Server" aria-hidden="true"></span>@endif</a>
   													</h4>
   													<p class="summary hidden-xs">{{ str_limit($server->description, $limit = 100, $end = '...') }}</p>
                             <div class="hidden-lg hidden-md hidden-sm">
@@ -80,4 +80,13 @@
       </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip()
+});
+</script>
+}
 @endsection

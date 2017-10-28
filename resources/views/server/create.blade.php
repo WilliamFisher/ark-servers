@@ -41,6 +41,19 @@
 
             <div class="form-group">
 
+              <label for="rented" class="col-md-4 control-label">Hosted On</label>
+
+              <div class="col-md-6">
+                <select id="rented" class="form-control" name="rented">
+                  <option>Home Console</option>
+                  <option>Dedicated Hardware (Nitrado)</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
               <label for="rules" class="col-md-4 control-label">Rules</label>
 
               <div class="col-md-6">

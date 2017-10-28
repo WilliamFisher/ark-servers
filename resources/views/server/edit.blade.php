@@ -42,6 +42,19 @@
 
             <div class="form-group">
 
+              <label for="rented" class="col-md-4 control-label">Hosted On</label>
+
+              <div class="col-md-6">
+                <select id="rented" class="form-control" name="rented">
+                  <option @if($server->rented == false) selected="selected" @endif>Home Console</option>
+                  <option @if($server->rented == true) selected="selected" @endif>Dedicated Hardware (Nitrado)</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
               <label for="rules" class="col-md-4 control-label">Rules</label>
 
               <div class="col-md-6">

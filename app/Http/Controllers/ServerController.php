@@ -157,6 +157,7 @@ class ServerController extends Controller
       $this->validate($request, [
         'name' => 'bail|required|string|unique:servers|max:16',
         'description' => 'required|string|max:500',
+        'rented' => ['required', Rule::in(['Home Console', 'Dedicated Hardware (Nitrado)'])],
         'rules' => 'nullable|string',
         'platform' => ['required', Rule::in(['Xbox', 'Playstation'])],
         'ispvp' => 'nullable|boolean',
@@ -175,17 +176,23 @@ class ServerController extends Controller
       $server->user_id = Auth::user()->id;
       $server->name = $request->name;
       $server->description = $request->description;
+      if($request->rented == 'Dedicated Hardware (Nitrado)')
+      {
+        $server->rented = true;
+      } else {
+        $server->rented = false;
+      }
       if($request->rules == null)
       {
         $server->rules = 'None';
-      }else {
+      } else {
         $server->rules = $request->rules;
       }
       $server->platform = $request->platform;
       if($request->ispvp == null)
       {
         $server->is_pvp = false;
-      }else{
+      } else {
         $server->is_pvp = true;
       }
       if($request->ispve == null)
@@ -246,6 +253,7 @@ class ServerController extends Controller
       $this->validate($request, [
         'name' => 'bail|required|max:16|string|unique:servers,name,'.$server->id,
         'description' => 'required|string|max:500',
+        'rented' => ['required', Rule::in(['Home Console', 'Dedicated Hardware (Nitrado)'])],
         'rules' => 'nullable|string',
         'platform' => ['required', Rule::in(['Xbox', 'Playstation'])],
         'ispvp' => 'nullable|boolean',
@@ -261,6 +269,12 @@ class ServerController extends Controller
 
       $server->name = $request->name;
       $server->description = $request->description;
+      if($request->rented == 'Dedicated Hardware (Nitrado)')
+      {
+        $server->rented = true;
+      } else {
+        $server->rented = false;
+      }
       if($request->rules == null)
       {
         $server->rules = 'None';
