@@ -119,7 +119,9 @@ class ServerController extends Controller
     {
       $servers = Server::search($request->search)->paginate(9);
 
-      return view('server.index', compact('servers'));
+      $title = "All Servers";
+
+      return view('server.index', compact('servers', 'title'));
     }
 
     public function likeserver(Server $server)
