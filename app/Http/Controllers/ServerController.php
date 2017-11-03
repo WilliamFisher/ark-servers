@@ -23,7 +23,7 @@ class ServerController extends Controller
      */
     public function index()
     {
-      $servers = Server::orderBy('average_rating', 'desc')->paginate(9);
+      $servers = Server::orderBy('average_rating', 'desc')->orderBy('rented', 'desc')->paginate(9);
       $title = "All Servers";
 
       return view('server.index', compact('servers', 'title'));
@@ -31,7 +31,7 @@ class ServerController extends Controller
 
     public function xbox()
     {
-      $servers = Server::ofPlatform('xbox')->orderBy('average_rating', 'desc')->paginate(9);
+      $servers = Server::ofPlatform('xbox')->orderBy('average_rating', 'desc')->orderBy('rented', 'desc')->paginate(9);
       $title = "Xbox Servers";
 
       return view('server.index', compact('servers', 'title'));
@@ -39,7 +39,7 @@ class ServerController extends Controller
 
     public function playstation()
     {
-      $servers = Server::ofPlatform('playstation')->orderBy('average_rating', 'desc')->paginate(9);
+      $servers = Server::ofPlatform('playstation')->orderBy('average_rating', 'desc')->orderBy('rented', 'desc')->paginate(9);
       $title = "Playstation Servers";
 
       return view('server.index', compact('servers', 'title'));
