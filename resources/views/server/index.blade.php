@@ -5,8 +5,52 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a role="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseFilter"><span class="glyphicon glyphicon-filter"></span>Filter</a>
+          </div>
+          <div id="collapseFilter" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+              <form class="form-horizontal" id="filter-form" action="{{ route('servers.filter') }}" method="GET">
 
+                <div class="form-group filter-bar-group">
+                  <label for="serverhost" class="control-label">Server Host</label>
+                  <select class="form-control filter-select" name="serverhost" id="serverhost">
+                    <option selected disabled>All</option>
+                    <option>PC Hosted</option>
+                    <option>Console Hosted</option>
+                  </select>
+                </div>
+
+                <div class="form-group filter-bar-group">
+                  <label for="map" class="control-label">Map</label>
+                  <select class="form-control filter-select" name="map" id="map">
+                    <option selected disabled>All</option>
+                    <option>The Island</option>
+                    <option>The Center</option>
+                    <option>Scorched Earth</option>
+                    <option>Ragnarok</option>
+                  </select>
+                </div>
+
+                <div class="form-group filter-bar-group">
+                  <label for="platform" class="control-label">Platform</label>
+                  <select class="form-control filter-select" name="platform" id="platform">
+                    <option selected disabled>All</option>
+                    <option>Xbox</option>
+                    <option>Playstation</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-default">Show Results</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-10">
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="table-container">
@@ -17,7 +61,10 @@
                     </tr>
                     @foreach($servers as $server)
   									<tr data-status="green">
-  										<td @if(!auth()->check()) class="hidden-xs" @endif>
+                      @if(!auth()->check())
+                      <td class="hidden-xs"></td>
+                      @else
+  										<td>
                         @if($server->liked())
                         <a href="/servers/{{ $server->id }}/unlike" class="star-filled">
   												<i class="glyphicon glyphicon-star"></i>
@@ -28,6 +75,7 @@
   											</a>
                         @endif
   										</td>
+                      @endif
   										<td>
   											<div class="server">
   												<div class="server-body">
@@ -56,12 +104,17 @@
                         <div class="server">
                           <div class="server-info">
                             <h4 class="server-meta">{{ $server->map }}</h4>
-                            <p class="server-meta">Wiped {{ $server->last_wipe->diffForHumans() }}</p>
-                          <div>
+                            <p class="server-meta">Wiped {{ Carbon\Carbon::parse($server->last_wipe)->diffForHumans() }}</p>
+                          </div>
                         </div>
                       </td>
   									</tr>
                     @endforeach
+                    @if($servers->isEmpty())
+                    <tr>
+                      <td><h3>No Servers Found</h3></td>
+                    </tr>
+                    @endif
   								</tbody>
   							</table>
 						   </div>

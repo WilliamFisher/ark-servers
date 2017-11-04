@@ -25,6 +25,16 @@ class Server extends Model
       return $query->where('platform', $platform);
     }
 
+    public function scopeOfMap($query, $map)
+    {
+      return $query->where('map', $map);
+    }
+
+    public function scopeRented($query, $rented)
+    {
+      return $query->where('rented', $rented);
+    }
+
     public function user()
     {
       return $this->belongsTo(User::class);

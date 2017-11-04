@@ -29,6 +29,7 @@ Route::get('/login/callback/{provider}', 'SocialAuthController@callback');
 Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/servers/search', 'ServerController@search')->name('servers.search');
+Route::get('/servers/filter', 'ServerController@filter')->name('servers.filter');
 Route::get('/servers/{server}/like', 'ServerController@likeserver');
 Route::get('/servers/{server}/unlike', 'ServerController@unlikeserver');
 Route::get('/servers/{server}/claim', 'ServerController@claim');

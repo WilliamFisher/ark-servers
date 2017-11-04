@@ -14,7 +14,7 @@ class ServerController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth')->except('index', 'xbox', 'playstation', 'show', 'search');
+    $this->middleware('auth')->except('index', 'filter', 'xbox', 'playstation', 'show', 'search');
   }
     /**
      * Display a listing of the resource.
@@ -41,6 +41,38 @@ class ServerController extends Controller
     {
       $servers = Server::ofPlatform('playstation')->orderBy('average_rating', 'desc')->orderBy('rented', 'desc')->paginate(9);
       $title = "Playstation Servers";
+
+      return view('server.index', compact('servers', 'title'));
+    }
+
+    public function filter(Request $request)
+    {
+      $title = "Filter Results";
+      $serverhost = $request->input('serverhost');
+      if($serverhost == 'PC Hosted') {
+        $rented = true;
+      } else {
+        $rented = false;
+      }
+
+      $server_db = DB::table('servers');
+
+      if($request->has('serverhost'))
+      {
+        $server_db->where('rented', $rented);
+      }
+
+      if($request->has('map'))
+      {
+        $server_db->where('map', $request->input('map'));
+      }
+
+      if($request->has('platform'))
+      {
+        $server_db->where('platform', $request->input('platform'));
+      }
+
+      $servers = $server_db->paginate(9);
 
       return view('server.index', compact('servers', 'title'));
     }

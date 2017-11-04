@@ -56,14 +56,16 @@ body {
 .well {
   background-color: #333;
 }
-
 .form-control {
   background-color: #333;
 }
 .form-control, output {
   color: #cdcdcd;
 }
-
+.filter-select {
+  color: #4d4d4d;
+  background-color: #d2d2d2;
+}
 .btn-default {
   background-color: #333;
 }
@@ -214,4 +216,8 @@ body {
 .table-filter .server .server-body .server-rates {
 	font-size: 12px;
   margin: 0;
+}
+div.form-group.filter-bar-group {
+  margin-left: 1px;
+  margin-right: 1px;
 }
