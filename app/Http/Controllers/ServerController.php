@@ -49,7 +49,7 @@ class ServerController extends Controller
     {
       $title = "Filter Results";
       $serverhost = $request->input('serverhost');
-      if($serverhost == 'PC Hosted') {
+      if($serverhost == 'Nitrado Hosted') {
         $rented = true;
       } else {
         $rented = false;

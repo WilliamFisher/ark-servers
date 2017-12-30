@@ -18,7 +18,7 @@
                   <label for="serverhost" class="control-label">Server Host</label>
                   <select class="form-control filter-select" name="serverhost" id="serverhost">
                     <option selected disabled>All</option>
-                    <option>PC Hosted</option>
+                    <option>Nitrado Hosted</option>
                     <option>Console Hosted</option>
                   </select>
                 </div>
