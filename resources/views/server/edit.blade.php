@@ -99,6 +99,7 @@
                   <option @if($server->map == 'The Center') selected="selected" @endif>The Center</option>
                   <option @if($server->map == 'Scorched Earth') selected="selected" @endif>Scorched Earth</option>
                   <option @if($server->map == 'Ragnarok') selected="selected" @endif>Ragnarok</option>
+                  <option @if($server->map == 'Aberration') selected="selected" @endif>Aberration</option>
                 </select>
               </div>
 
