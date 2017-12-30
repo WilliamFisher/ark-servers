@@ -15,7 +15,7 @@
               <form class="form-horizontal" id="filter-form" action="{{ route('servers.filter') }}" method="GET">
 
                 <div class="form-group filter-bar-group">
-                  <label for="serverhost" class="control-label">Server Host</label>
+                  <label for="serverhost" class="control-label">Host Type</label>
                   <select class="form-control filter-select" name="serverhost" id="serverhost">
                     <option selected disabled>All</option>
                     <option>Nitrado Hosted</option>
