@@ -23,10 +23,10 @@
             {{ csrf_field() }}
             <div class="form-group">
 
-              <label for="name" class="col-md-4 control-label">GT or PSN</label>
+              <label for="name" class="col-md-4 control-label">Name</label>
 
               <div class="col-md-6">
-                <input id="name" type="text" class="form-control" placeholder="Gamertag or PSN name" name="name" value="{{ $server->name }}" maxlength="16" required autofocus>
+                <input id="name" type="text" class="form-control" placeholder="Gamertag, PSN, or Nitrado server name" name="name" value="{{ $server->name }}" maxlength="16" required autofocus>
               </div>
             </div>
 
